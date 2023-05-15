@@ -34,9 +34,9 @@ else alert("Good luck")
 // console.log(document.body)
 // head
 // console.log(document.head)
-const firstParagraph = document.getElementById('p')
-const empty = document.getElementById('empty')
-const divider = document.getElementById('div')
+// const firstParagraph = document.getElementById('p')
+// const empty = document.getElementById('empty')
+// const divider = document.getElementById('div')
 // call parent of paragrahp
 // console.log(firstParagraph.parentNode)
 
@@ -78,3 +78,38 @@ const divider = document.getElementById('div')
 /**
  * Only if we call document.documentElement.parentNode, it's working wrong, because <!DOCTYPE html> is parent of html tag
  */
+
+/**
+ * Searching elements
+ */
+
+// Both of these the same
+// const empty = document.getElementById('empty')
+// console.log(empty)
+
+/**
+ * querySelector matches also css selectors
+ */
+
+// const lastParagraphWithSelector = document.querySelector('div > p:hover')
+// console.log(lastParagraphWithSelector)
+
+// checks that img have src with ending png
+/*
+for(const elem of document.body.children)
+{
+    console.log("Parent element",elem)
+    if(elem.hasChildNodes()){
+        console.log('his child elements: ')
+        for (const elem2 of elem.children){
+            if(elem2.matches('img[src$="png"]'))console.log(elem2)
+        }
+    }
+}
+*/
+
+// const child = document.querySelector('#div > p')
+// console.log(child.closest('html'))
+
+// console.log(document.getElementsByName('hello'))
+

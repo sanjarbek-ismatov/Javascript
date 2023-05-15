@@ -1,2 +1,7 @@
-// get screen size with js
-// console.log(window.innerHeight)
+/**
+ * Exercises from javascript.info
+ */
+
+// Check node
+
+const li = document.getElementById('li')

@@ -4,10 +4,27 @@
     <title>DOM</title>
 </head>
 <body>
+
 <div id="div">
+
     <p id="p">Hello DOM! I love you!!!</p>
     <p id="empty"></p>
-    <p>Second paragraph</p>
+    <p name="hello">Second paragraph</p>
+    <script>
+        const p1 = document.getElementsByTagName('p')
+        const p2 = document.querySelectorAll('p')
+        console.log(p1.length)
+        console.log(p2.length)
+    </script>
+    <p>Hi I'm alone</p>
+    <script>
+        // the p updates when the dom update
+        console.log(p1.length)
+        // if the elements is called with querySelector, the value doesn't update when the dom change
+        console.log(p2.length)
+    </script>
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR3QxoiA4u0k1DiNe3Z5RSwD8JbGJBI6v7lGvannMXkLA&s" />
+    <img src="https://portfolio-master.onrender.com/image/16dba376fb81ee5a7871add9b52c5145.png" alt="">
 </div>
 </body>
 <script src="js/theory.js"></script>
