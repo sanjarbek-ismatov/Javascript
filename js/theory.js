@@ -113,3 +113,22 @@ for(const elem of document.body.children)
 
 // console.log(document.getElementsByName('hello'))
 
+// console.log(document.nodeName) // #document
+// console.log(document.body.tagName) // BODY
+
+// const empty = document.querySelector('#empty')
+// empty.outerHTML = `
+//     <ul id="empty">
+//         <li>First</li>
+//     </ul>
+// `
+// const list = document.getElementById('empty')
+
+// const div = document.getElementById('div')
+// console.log(div.firstChild.data)
+// div.hidden = true // this method hides the element
+const input = document.getElementById('input')
+// console.log(input.type)
+// console.log(input.name)
+// console.log(input.id)
+// console.log(input.getAttribute('custom'))
