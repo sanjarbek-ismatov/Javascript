@@ -128,7 +128,26 @@ for(const elem of document.body.children)
 // console.log(div.firstChild.data)
 // div.hidden = true // this method hides the element
 const input = document.getElementById('input')
+// input.customEvent = function(){
+//     alert(this.name)
+// }
+// input.customEvent()
+
 // console.log(input.type)
 // console.log(input.name)
 // console.log(input.id)
 // console.log(input.getAttribute('custom'))
+
+// String.prototype.reverse = function(){
+//     return this.toString().split('').reverse().join('')
+// }
+// console.log("Hello".reverse())
+
+// console.log(document.body.hasAttributes())
+// document.body.getAttribute("attribute name")
+// document.body.setAttribute('propety', 'value')
+// document.body.removeAttribute('name of need remove attribute')
+
+// for(const attr of input.attributes){
+//     console.log(attr.name, attr.value)
+// }
