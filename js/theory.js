@@ -127,7 +127,7 @@ for(const elem of document.body.children)
 // const div = document.getElementById('div')
 // console.log(div.firstChild.data)
 // div.hidden = true // this method hides the element
-const input = document.getElementById('input')
+const input = document.getElementById("input");
 // input.customEvent = function(){
 //     alert(this.name)
 // }
@@ -151,3 +151,63 @@ const input = document.getElementById('input')
 // for(const attr of input.attributes){
 //     console.log(attr.name, attr.value)
 // }
+
+// const button = document.querySelector('button')
+// console.log(button.dataset.text)
+
+/**
+ * Creating elements
+ * can possible write two and more arguments to these functions
+ */
+
+const customDiv = document.createElement("div");
+customDiv.innerText = "Hi i'm born";
+// document.createTextNode('Bla bla')
+// document.body.innerHTML = ""
+// document.body.append(customDiv)
+// document.body.prepend(customDiv)
+// the div is added to before body
+// document.body.before(customDiv)
+// the div is added to after body
+// document.body.after(customDiv)
+// the div is replaced with body
+// document.body.replaceWith(customDiv)
+
+// document.body.insertAdjacentHTML('beforebegin', '<p>Before begin</p>')
+// document.body.insertAdjacentHTML('afterbegin', '<p>Before its childs</p>')
+// document.body.insertAdjacentHTML('afterend', '<p>After end</p>')
+// document.body.insertAdjacentHTML('beforeend', '<p>After its childs</p>')
+
+// document.body.append(customDiv)
+// setTimeout(() => customDiv.remove(), 3000)
+
+// Fragment
+async function main() {
+  const res = await fetch("https://jsonplaceholder.typicode.com/posts");
+  const data = await res.json();
+  const ul = document.getElementById("ul");
+  // const fragment = new DocumentFragment();
+  // for (const post of data) {
+  //   const li = document.createElement("li");
+  //   li.textContent = post.title;
+  //   fragment.append(li);
+  // }
+  // ul.append(fragment);
+
+  // without fragment
+  // const result = [];
+  // for (const post of data) {
+  //   const li = document.createElement("li");
+  //   li.textContent = post.title;
+  //   result.push(li);
+  // }
+  // ul.append(...result);
+}
+
+// main();
+
+// document.body.appendChild(customDiv);
+// document.body.insertBefore(customDiv, document.getElementById("p"));
+// document.body.children[0].replaceChild(document.getElementById("p"), customDiv);
+
+// document.body.removeChild() // deletes only child
