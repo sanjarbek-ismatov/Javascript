@@ -69,31 +69,117 @@
 </body>
 </html>
 -->
-<!DOCTYPE HTML>
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
+<!--<body>-->
+
+<!--<a name="list">The list:</a>-->
+<!--<ul>-->
+<!--  <li><a href="http://google.com">http://google.com</a></li>-->
+<!--  <li><a href="/tutorial">/tutorial.html</a></li>-->
+<!--  <li><a href="local/path">local/path</a></li>-->
+<!--  <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>-->
+<!--  <li><a href="http://nodejs.org">http://nodejs.org</a></li>-->
+<!--  <li><a href="http://internal.com/test">http://internal.com/test</a></li>-->
+<!--</ul>-->
+
+<!--<script>-->
+<!--  // ...your code...-->
+<!--  const links = document.querySelectorAll('a');-->
+
+<!--  for (let elem of links){-->
+<!--    const href = elem.getAttribute('href')-->
+<!--    if(!href) continue-->
+<!--    if(!href.includes('://')) continue;-->
+<!--    if(href.startsWith("http://internal.com")) continue;-->
+<!--    elem.style.color = "orange"-->
+<!--  }-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE html>
 <html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+
 <body>
 
-<a name="list">The list:</a>
+<div id="tree"></div>
+
+<!-- The result should be:
+<div id="tree">
 <ul>
-  <li><a href="http://google.com">http://google.com</a></li>
-  <li><a href="/tutorial">/tutorial.html</a></li>
-  <li><a href="local/path">local/path</a></li>
-  <li><a href="ftp://ftp.com/my.zip">ftp://ftp.com/my.zip</a></li>
-  <li><a href="http://nodejs.org">http://nodejs.org</a></li>
-  <li><a href="http://internal.com/test">http://internal.com/test</a></li>
+<li>Fish
+  <ul>
+    <li>trout</li>
+    <li>salmon</li>
+  </ul>
+</li>
+<li>Trees
+  <ul>
+    <li>Huge
+      <ul>
+        <li>sequoia</li>
+        <li>oak</li>
+      </ul>
+    </li>
+    <li>Flowering
+      <ul>
+        <li>apple tree</li>
+        <li>magnolia</li>
+      </ul>
+    </li>
+  </ul>
+</li>
 </ul>
+</div>
+-->
 
 <script>
-  // ...your code...
-  const links = document.querySelectorAll('a');
+    let data = {
+        "Fish": {
+            "trout": {},
+            "salmon": {}
+        },
 
-  for (let elem of links){
-    const href = elem.getAttribute('href')
-    if(!href) continue
-    if(!href.includes('://')) continue;
-    if(href.startsWith("http://internal.com")) continue;
-    elem.style.color = "orange"
-  }
+        "Tree": {
+            "Huge": {
+                "sequoia": {},
+                "oak": {}
+            },
+            "Flowering": {
+                "apple tree": {},
+                "magnolia": {}
+            }
+        }
+    };
+
+    function splitter(data) {
+        const ul = document.createElement('ul')
+        
+        return ul
+        // if (Object.keys(data[key]).length !== 0) {
+        //   const ul = document.createElement('ul')
+        //   for (const insidekey of Object.keys(data[key])) {
+        //     const insideLi = document.createElement('li')
+        //     insideLi.textContent = insidekey
+        //     ul.append(insideLi)
+        //   }
+        //   li.append(ul)
+        // }
+    }
+
+    function createTree(container, data) {
+        const fragment = new DocumentFragment()
+        const body = splitter(data)
+        container.append(fragment)
+    }
+
+    createTree(document.getElementById('tree'), data);
 </script>
 
 </body>
