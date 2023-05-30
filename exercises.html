@@ -259,10 +259,19 @@
 
 <body>
 
-
+<label for="year">Year</label><input id="year">
+<label for="month">Month</label><input id="month">
+<button id="submit-button">Submit</button>
 <div id="calendar"></div>
 
 <script>
+    const yearInput = document.getElementById('year')
+    const monthInput = document.getElementById('month')
+    const submitButton = document.getElementById('submit-button')
+    submitButton.addEventListener('click', function () {
+        createCalendar(calendar, +yearInput.value, +monthInput.value)
+    })
+
     function getDaysOfMonth(year, month) {
         const date = new Date(year, month, 1)
         date.setMonth(date.getMonth() + 1)
@@ -284,10 +293,26 @@
             tr.append(th)
         }
         table.append(tr)
-        for (let i = 0; i < dates; i++) {
+        const trLengths = Math.ceil(dates / 7) + 1
+        let currentDay = 1;
+        let index = 0;
+        for (let i = 0; i < trLengths; i++) {
+            const tr = document.createElement('tr')
+            const tdLen = dates - currentDay >= 7 ? 7 : dates - currentDay + 1
+            for (let j = 0; j < tdLen; j++) {
 
+                const td = document.createElement('td')
+                if (index >= startDay) {
+                    td.textContent = currentDay
+                    currentDay++
+                }
+                tr.append(td)
+                index++;
+            }
+            table.append(tr)
         }
 
+        elem.innerHTML = ""
         elem.append(table)
     }
 
