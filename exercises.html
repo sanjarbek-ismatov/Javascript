@@ -139,47 +139,159 @@
 </div>
 -->
 
-<script>
-    let data = {
-        "Fish": {
-            "trout": {},
-            "salmon": {}
-        },
+<!--<script>-->
+<!--    let data = {-->
+<!--        "Fish": {-->
+<!--            "trout": {},-->
+<!--            "salmon": {}-->
+<!--        },-->
 
-        "Tree": {
-            "Huge": {
-                "sequoia": {},
-                "oak": {}
-            },
-            "Flowering": {
-                "apple tree": {},
-                "magnolia": {}
-            }
+<!--        "Tree": {-->
+<!--            "Huge": {-->
+<!--                "sequoia": {},-->
+<!--                "oak": {}-->
+<!--            },-->
+<!--            "Flowering": {-->
+<!--                "apple tree": {},-->
+<!--                "magnolia": {}-->
+<!--            }-->
+<!--        }-->
+<!--    };-->
+
+<!--    function splitter(data) {-->
+<!--        const ul = document.createElement('ul')-->
+<!--        if (!Object.keys(data).length) return;-->
+<!--        for (let key in data) {-->
+<!--            const li = document.createElement('li')-->
+<!--            li.textContent = key-->
+<!--            const childrenUl = splitter(data[key])-->
+<!--            if (childrenUl) li.append(childrenUl)-->
+<!--            ul.append(li)-->
+<!--        }-->
+<!--        return ul-->
+<!--    }-->
+
+<!--    function createTree(container, data) {-->
+<!--        const body = splitter(data)-->
+<!--        container.append(body)-->
+<!--    }-->
+
+<!--    createTree(document.getElementById('tree'), data);-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE HTML>-->
+<!--<html lang="en">-->
+<!--<body>-->
+
+<!--<ul>-->
+<!--    <li>Animals-->
+<!--        <ul>-->
+<!--            <li>Mammals-->
+<!--                <ul>-->
+<!--                    <li>Cows</li>-->
+<!--                    <li>Donkeys</li>-->
+<!--                    <li>Dogs</li>-->
+<!--                    <li>Tigers</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li>Other-->
+<!--                <ul>-->
+<!--                    <li>Snakes</li>-->
+<!--                    <li>Birds</li>-->
+<!--                    <li>Lizards</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--    <li>Fishes-->
+<!--        <ul>-->
+<!--            <li>Aquarium-->
+<!--                <ul>-->
+<!--                    <li>Guppy</li>-->
+<!--                    <li>Angelfish</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--            <li>Sea-->
+<!--                <ul>-->
+<!--                    <li>Sea trout</li>-->
+<!--                </ul>-->
+<!--            </li>-->
+<!--        </ul>-->
+<!--    </li>-->
+<!--</ul>-->
+
+<!--<script>-->
+<!--    const lis = document.getElementsByTagName('li')-->
+<!--    for (const li of lis) {-->
+<!--        const lengthofLi = li.getElementsByTagName('li').length-->
+<!--        if (lengthofLi) li.firstChild.textContent += ' [' + lengthofLi + ']';-->
+<!--    }-->
+<!--</script>-->
+
+<!--</body>-->
+<!--</html>-->
+
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <style>
+        table {
+            border-collapse: collapse;
         }
-    };
 
-    function splitter(data) {
-        const ul = document.createElement('ul')
-        
-        return ul
-        // if (Object.keys(data[key]).length !== 0) {
-        //   const ul = document.createElement('ul')
-        //   for (const insidekey of Object.keys(data[key])) {
-        //     const insideLi = document.createElement('li')
-        //     insideLi.textContent = insidekey
-        //     ul.append(insideLi)
-        //   }
-        //   li.append(ul)
-        // }
+        td,
+        th {
+            border: 1px solid black;
+            padding: 3px;
+            text-align: center;
+        }
+
+        th {
+            font-weight: bold;
+            background-color: #E6E6E6;
+        }
+    </style>
+</head>
+
+<body>
+
+
+<div id="calendar"></div>
+
+<script>
+    function getDaysOfMonth(year, month) {
+        const date = new Date(year, month, 1)
+        date.setMonth(date.getMonth() + 1)
+        date.setDate(date.getDate() - 1)
+        return date.getDate()
     }
 
-    function createTree(container, data) {
-        const fragment = new DocumentFragment()
-        const body = splitter(data)
-        container.append(fragment)
+    function createCalendar(elem, year, month) {
+
+        // ...your code that generates the calndar in elem...
+        const table = document.createElement('table')
+        const daysOfTheWeek = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
+        const dates = getDaysOfMonth(year, month)
+        const tr = document.createElement('tr')
+        const startDay = (new Date(`${year}.${month}`).getDay() + 6) % 7
+        for (let day of daysOfTheWeek) {
+            const th = document.createElement('th')
+            th.innerText = day
+            tr.append(th)
+        }
+        table.append(tr)
+        for (let i = 0; i < dates; i++) {
+
+        }
+
+        elem.append(table)
     }
 
-    createTree(document.getElementById('tree'), data);
+    createCalendar(calendar, 2012, 9);
 </script>
 
 </body>
