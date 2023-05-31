@@ -211,3 +211,26 @@ async function main() {
 // document.body.children[0].replaceChild(document.getElementById("p"), customDiv);
 
 // document.body.removeChild() // deletes only child
+
+/**
+ * Classes and styles
+ */
+
+const list = document.querySelector(".list");
+list.classList.add("ul");
+// console.log(Array.from(list.classList));
+
+// remove styles
+
+list.style.color = "red";
+// list.style.color = "";
+// list.style.removeProperty("color");
+
+// list.style.cssText = `
+//   color: blue;
+//   background-color: yellow;
+// `;
+
+// list.setAttribute("style", "color: gray;");
+const computedStyle = getComputedStyle(list, "hover");
+console.log(computedStyle.width);

@@ -4,16 +4,30 @@
     <title>DOM</title>
 </head>
 <body>
+<style style="display: block" contenteditable="true">
+    .list {
+        width: 100px;
+    }
 
+    .list:hover {
+        width: 10px;
+    }
+
+    #a:visited {
+        color: red;
+    }
+</style>
 <div id="div">
     <!-- This is a comment-->
+
     <p id="p">Hello DOM! I love you!!!</p>
     hello text
     <p id="empty"></p>
     <p name="hello">Second paragraph</p>
     <input id="input" type="color" name="color" custom="bla">
+    <a id="a" target="_blank" href="https://google.com">Google</a>
     <ul id="ul" class="list">
-
+        <li>Hello</li>
     </ul>
     <button data-text="fucked message" data-action="function fucked(){console.log('Action')}"></button>
     <script>
