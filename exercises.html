@@ -99,16 +99,16 @@
 <!--</body>-->
 <!--</html>-->
 
-<!DOCTYPE html>
-<html>
+<!--<!DOCTYPE html>-->
+<!--<html>-->
 
-<head>
-    <meta charset="utf-8">
-</head>
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--</head>-->
 
-<body>
+<!--<body>-->
 
-<div id="tree"></div>
+<!--<div id="tree"></div>-->
 
 <!-- The result should be:
 <div id="tree">
@@ -234,90 +234,175 @@
 <!--</body>-->
 <!--</html>-->
 
-<!DOCTYPE HTML>
-<html>
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
 
-<head>
-    <style>
-        table {
-            border-collapse: collapse;
-        }
+<!--<head>-->
+<!--    <style>-->
+<!--        table {-->
+<!--            border-collapse: collapse;-->
+<!--        }-->
 
-        td,
-        th {
-            border: 1px solid black;
-            padding: 3px;
-            text-align: center;
-        }
+<!--        td,-->
+<!--        th {-->
+<!--            border: 1px solid black;-->
+<!--            padding: 3px;-->
+<!--            text-align: center;-->
+<!--        }-->
 
-        th {
-            font-weight: bold;
-            background-color: #E6E6E6;
-        }
-    </style>
-</head>
+<!--        th {-->
+<!--            font-weight: bold;-->
+<!--            background-color: #E6E6E6;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
 
-<body>
+<!--<body>-->
 
-<label for="year">Year</label><input id="year">
-<label for="month">Month</label><input id="month">
-<button id="submit-button">Submit</button>
-<div id="calendar"></div>
+<!--<label for="year">Year</label><input id="year">-->
+<!--<label for="month">Month</label><input id="month">-->
+<!--<button id="submit-button">Submit</button>-->
+<!--<div id="calendar"></div>-->
 
-<script>
-    const yearInput = document.getElementById('year')
-    const monthInput = document.getElementById('month')
-    const submitButton = document.getElementById('submit-button')
-    submitButton.addEventListener('click', function () {
-        createCalendar(calendar, +yearInput.value, +monthInput.value)
-    })
+<!--<script>-->
+<!--    const yearInput = document.getElementById('year')-->
+<!--    const monthInput = document.getElementById('month')-->
+<!--    const submitButton = document.getElementById('submit-button')-->
+<!--    submitButton.addEventListener('click', function () {-->
+<!--        createCalendar(calendar, +yearInput.value, +monthInput.value)-->
+<!--    })-->
 
-    function getDaysOfMonth(year, month) {
-        const date = new Date(year, month, 1)
-        date.setMonth(date.getMonth() + 1)
-        date.setDate(date.getDate() - 1)
-        return date.getDate()
-    }
+<!--    function getDaysOfMonth(year, month) {-->
+<!--        const date = new Date(year, month, 1)-->
+<!--        date.setMonth(date.getMonth() + 1)-->
+<!--        date.setDate(date.getDate() - 1)-->
+<!--        return date.getDate()-->
+<!--    }-->
 
-    function createCalendar(elem, year, month) {
+<!--    function createCalendar(elem, year, month) {-->
 
-        // ...your code that generates the calndar in elem...
-        const table = document.createElement('table')
-        const daysOfTheWeek = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]
-        const dates = getDaysOfMonth(year, month)
-        const tr = document.createElement('tr')
-        const startDay = (new Date(`${year}.${month}`).getDay() + 6) % 7
-        for (let day of daysOfTheWeek) {
-            const th = document.createElement('th')
-            th.innerText = day
-            tr.append(th)
-        }
-        table.append(tr)
-        const trLengths = Math.ceil(dates / 7)
-        let currentDay = 1;
-        let index = 0;
-        for (let i = 0; i < trLengths; i++) {
-            const tr = document.createElement('tr')
-            const tdLen = dates - currentDay >= 7 ? 7 : dates - currentDay + 1
-            for (let j = 0; j < tdLen; j++) {
+<!--        // ...your code that generates the calndar in elem...-->
+<!--        const table = document.createElement('table')-->
+<!--        const daysOfTheWeek = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]-->
+<!--        const dates = getDaysOfMonth(year, month)-->
+<!--        const tr = document.createElement('tr')-->
+<!--        const startDay = (new Date(`${year}.${month}`).getDay() + 6) % 7-->
+<!--        for (let day of daysOfTheWeek) {-->
+<!--            const th = document.createElement('th')-->
+<!--            th.innerText = day-->
+<!--            tr.append(th)-->
+<!--        }-->
+<!--        table.append(tr)-->
+<!--        const trLengths = Math.ceil(dates / 7)-->
+<!--        let currentDay = 1;-->
+<!--        let index = 0;-->
+<!--        for (let i = 0; i < trLengths; i++) {-->
+<!--            const tr = document.createElement('tr')-->
+<!--            const tdLen = dates - currentDay >= 7 ? 7 : dates - currentDay + 1-->
+<!--            for (let j = 0; j < tdLen; j++) {-->
 
-                const td = document.createElement('td')
-                if (index >= startDay) {
-                    td.textContent = currentDay
-                    currentDay++
-                }
-                tr.append(td)
-                index++;
-            }
-            table.append(tr)
-        }
+<!--                const td = document.createElement('td')-->
+<!--                if (index >= startDay) {-->
+<!--                    td.textContent = currentDay-->
+<!--                    currentDay++-->
+<!--                }-->
+<!--                tr.append(td)-->
+<!--                index++;-->
+<!--            }-->
+<!--            table.append(tr)-->
+<!--        }-->
 
-        elem.innerHTML = ""
-        elem.append(table)
-    }
+<!--        elem.innerHTML = ""-->
+<!--        elem.append(table)-->
+<!--    }-->
 
-    createCalendar(calendar, 2012, 9);
-</script>
+<!--    createCalendar(calendar, 2012, 9);-->
+<!--</script>-->
 
-</body>
-</html>
+<!--</body>-->
+<!--</html>-->
+
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
+<!--<body>-->
+
+<!--&lt;!&ndash; click on this button calls clockStart() &ndash;&gt;-->
+<!--<input type="button" onclick="clockStart()" value="Start">-->
+
+<!--&lt;!&ndash; click on this button calls clockStop() &ndash;&gt;-->
+<!--<input type="button" onclick="clockStop()" value="Stop">-->
+
+<!--</body>-->
+<!--<script>-->
+
+<!--    const p = document.createElement('p')-->
+<!--    const [hh, mm, ss] = [1, 2, 3].map(e => document.createElement('span'))-->
+<!--    hh.style.color = "red"-->
+<!--    hh.innerText = "hh"-->
+<!--    mm.style.color = "green"-->
+<!--    mm.innerText = "mm"-->
+
+<!--    ss.style.color = "blue"-->
+<!--    ss.innerText = "ss"-->
+
+<!--    var interval;-->
+
+<!--    function clockStart() {-->
+<!--        interval = setInterval(() => {-->
+<!--            const time = new Date()-->
+<!--            hh.innerText = time.getHours()-->
+<!--            mm.innerText = time.getMinutes()-->
+<!--            ss.innerText = time.getSeconds()-->
+<!--        }, 1000)-->
+<!--    }-->
+
+<!--    function clockStop() {-->
+<!--        clearInterval(interval)-->
+<!--    }-->
+
+<!--    p.append(hh, ":", mm, ":", ss)-->
+<!--    document.body.prepend(p)-->
+<!--</script>-->
+<!--</html>-->
+
+<!--<!DOCTYPE html>-->
+
+<!--<table id="table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--        <th>Name</th>-->
+<!--        <th>Surname</th>-->
+<!--        <th>Age</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr>-->
+<!--        <td>John</td>-->
+<!--        <td>Smith</td>-->
+<!--        <td>10</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>Pete</td>-->
+<!--        <td>Brown</td>-->
+<!--        <td>15</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>Ann</td>-->
+<!--        <td>Lee</td>-->
+<!--        <td>5</td>-->
+<!--    </tr>-->
+<!--    <tr>-->
+<!--        <td>...</td>-->
+<!--        <td>...</td>-->
+<!--        <td>...</td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--</table>-->
+
+<!--<script>-->
+<!--    // ... your code ...-->
+<!--    const table = document.getElementById('table')-->
+<!--    const sorted = Array.from(table.tBodies[0].rows).sort((rowA, rowB) => rowA.cells[0].innerText.localeCompare(rowB.cells[0].innerText))-->
+<!--    table.tBodies[0].innerHTML = ""-->
+<!--    table.tBodies[0].append(...sorted)-->
+<!--</script>-->
