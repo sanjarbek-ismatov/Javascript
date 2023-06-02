@@ -16,6 +16,26 @@
     #a:visited {
         color: red;
     }
+
+    .box {
+        width: 200px;
+        height: 200px;
+        border: 5px solid black;
+        background-color: green;
+        position: absolute;
+        top: 180px;
+        left: 180px;
+        overflow-y: auto;
+    }
+
+    .box span {
+        position: fixed;
+        top: 0;
+        left: 0;
+        height: 10px;
+        background: red;
+    }
+
 </style>
 <div id="div">
     <!-- This is a comment-->
@@ -30,6 +50,15 @@
         <li>Hello</li>
     </ul>
     <button data-text="fucked message" data-action="function fucked(){console.log('Action')}"></button>
+    <div class="box">
+        <span></span>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Beatae esse fugiat nostrum. Blanditiis dolore dolores
+        expedita fuga illum impedit in inventore nulla obcaecati quisquam repellendus reprehenderit sit tempore vel,
+        veniam. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Consequuntur cumque maxime odio veniam.
+        Architecto doloribus est eveniet excepturi, expedita iure magni molestiae necessitatibus nemo obcaecati odit
+        repellat rerum sunt. Minima.
+        <button>Toggle scroll</button>
+    </div>
     <script>
         const p1 = document.getElementsByTagName('p')
         const p2 = document.querySelectorAll('p')

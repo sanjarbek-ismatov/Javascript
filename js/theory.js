@@ -222,7 +222,7 @@ list.classList.add("ul");
 
 // remove styles
 
-list.style.color = "red";
+// list.style.color = "red";
 // list.style.color = "";
 // list.style.removeProperty("color");
 
@@ -232,5 +232,57 @@ list.style.color = "red";
 // `;
 
 // list.setAttribute("style", "color: gray;");
-const computedStyle = getComputedStyle(list, "hover");
-console.log(computedStyle.width);
+// const computedStyle = getComputedStyle(list, "hover");
+// console.log(computedStyle.width);
+/**
+ * Size and scroll
+ */
+
+const box = document.querySelector(".box");
+// console.log(box.offsetTop); // 180
+// console.log(box.offsetLeft); // 180
+// console.log(box.offsetWidth); // 210
+// console.log(box.offsetHeight); // 210
+// console.log(box.offsetParent); // body
+// box.style.padding = "10px";
+// console.log(box.offsetWidth); // 230
+// box.style.display = "none";
+// console.log(box.offsetWidth); // 0
+// box.style.removeProperty("display");
+// console.log(box.clientTop); // 5
+// console.log(box.clientHeight); // 220
+
+// after added scroll
+
+// console.log(box.offsetWidth - box.clientWidth);
+
+// console.log(box.scrollHeight); // 362
+// console.log(box.scrollWidth);
+// box.onscroll = function () {
+//   const percent = (this.scrollTop / 142) * 100;
+//   console.log(percent);
+//   this.firstElementChild.style.width = `${percent}%`;
+// };
+// const SCROLL_HEIGHT = box.clientHeight;
+// box.lastElementChild.addEventListener("click", function () {
+//   if (box.clientHeight === box.scrollHeight) {
+//     box.style.height = `${SCROLL_HEIGHT}px`;
+//   } else box.style.height = `${box.scrollHeight}px`;
+// });
+// box.addEventListener("click", function () {
+//   this.scrollBottom += 5;
+// });
+//
+// Object.defineProperty(HTMLElement.prototype, "scrollBottom", {
+//   get: function () {
+//     return this.scrollHeight - this.scrollTop - this.clientHeight;
+//   },
+//   set: function (val) {
+//     this.scrollTop = this.scrollHeight - this.clientHeight - val;
+//   },
+// });
+// box.onscroll = function () {
+//   console.log(this.scrollBottom);
+// };
+
+// console.log(box.offsetWidth - (box.clientLeft * 2 + box.clientWidth));
