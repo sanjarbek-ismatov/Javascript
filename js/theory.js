@@ -286,3 +286,56 @@ const box = document.querySelector(".box");
 // };
 
 // console.log(box.offsetWidth - (box.clientLeft * 2 + box.clientWidth));
+
+/**
+ * Window size and scroll
+ */
+
+// get size of web page
+// documentElement is <html> tag
+// console.log(document.documentElement.clientWidth);
+// console.log(document.documentElement.clientHeight);
+
+// get size with included panel
+
+// console.log(window.innerWidth);
+// console.log(window.innerHeight);
+
+// get full height of the page
+
+// console.log(
+//   window.innerHeight,
+//   document.documentElement.clientHeight,
+//   document.documentElement.offsetHeight,
+//   document.documentElement.scrollHeight,
+//   document.body.scrollHeight
+// );
+
+// window.onscroll = function () {
+//   console.log(this.document.documentElement.scrollTop);
+//   console.log(this.pageYOffset);
+//   console.log(this.scrollY);
+// };
+// window.onclick = function () {
+//   this.scrollBy(0, 30); // relative coordinates
+//   // this.scrollTo(0, 10); // for exact coordinates
+// };
+
+const button1 = document.getElementById("button1");
+const button2 = document.getElementById("button2");
+button1.onclick = function () {
+  // this.scrollIntoView({ behavior: "smooth", block: "center" });
+};
+button2.onclick = function () {
+  this.scrollIntoView(false);
+};
+
+// disable scrolling
+
+// button1.addEventListener("click", function () {
+//   const { overflowY } = document.body.style;
+//   document.body.style.overflowY = overflowY === "hidden" ? "" : "hidden";
+// });
+
+// more options for scrollTo and scrollBy
+// window.scrollTo({ behavior: "smooth", top: 100, left: 0 });
