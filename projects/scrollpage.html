@@ -94,26 +94,28 @@
 </body>
 <script>
     const [buttonBefore, , buttonAfter] = document.getElementById('control').children
-    let index = 0;
-    const MAX_HEIGHT = document.documentElement.scrollHeight;
-
     const divs = document.querySelector('main').children
+    let index = 3;
+    const MAX_HEIGHT = document.documentElement.scrollHeight - document.body.querySelector('header').clientHeight;
+    const SINGLE_HEIGHT = divs[0].clientHeight
 
     /**
      * detects position
      * @param {number} xPosition
      */
-    function(xPosition){
-      // if(xPosition)
+    function positionMatcher(xPosition) {
+        console.log((index + 1) * SINGLE_HEIGHT)
     }
+
     /**
      * position updater
      * @param {HTMLDivElement} elem
      */
     function updatePosition(elem) {
 
-        const currentIndex = MAX_HEIGHT / window.scrollY
-        console.log(currentIndex)
+        // const currentIndex = MAX_HEIGHT / window.scrollY
+        // console.log(currentIndex)
+        positionMatcher(index)
     }
 
     buttonBefore.addEventListener('click', function () {
