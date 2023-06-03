@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scroll page</title>
+    <style type="text/css">
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            padding: 20px;
+        }
+
+        header nav ul {
+            display: flex;
+            list-style-type: none;
+        }
+
+        header nav ul li {
+            margin: 0 10px;
+        }
+
+        header nav ul li a {
+            text-decoration: none;
+        }
+
+        main div {
+            width: 100%;
+            height: 100vh;
+        }
+
+        #control {
+            position: fixed;
+            top: 50%;
+            right: 0;
+            text-align: center;
+
+        }
+
+        #control button {
+            padding: 10px;
+            color: #fff;
+            border: none;
+            background-color: #111;
+        }
+
+
+    </style>
+</head>
+<body>
+<div id="control">
+    <button>Before</button>
+    <br>
+    <button>After</button>
+</div>
+<header>
+    <h1>Hi Scroll</h1>
+    <nav>
+        <ul>
+            <li>
+                <a href="#">Home</a>
+            </li>
+            <li>
+                <a href="#">About</a>
+            </li>
+            <li>
+                <a href="#">Contact</a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div style="background-color: red;">
+        <h1>Page 1</h1>
+    </div>
+    <div style="background-color: blue;">
+        <h1>Page 2</h1>
+    </div>
+    <div style="background-color: yellow;">
+        <h1>Page 3</h1>
+    </div>
+    <div style="background-color: green;">
+        <h1>Page 4</h1>
+    </div>
+</main>
+</body>
+<script>
+    const [buttonBefore, , buttonAfter] = document.getElementById('control').children
+    let index = 0;
+    const MAX_HEIGHT = document.documentElement.scrollHeight;
+
+    const divs = document.querySelector('main').children
+
+    /**
+     * detects position
+     * @param {number} xPosition
+     */
+    function(xPosition){
+      // if(xPosition)
+    }
+    /**
+     * position updater
+     * @param {HTMLDivElement} elem
+     */
+    function updatePosition(elem) {
+
+        const currentIndex = MAX_HEIGHT / window.scrollY
+        console.log(currentIndex)
+    }
+
+    buttonBefore.addEventListener('click', function () {
+        // divs[index].scrollIntoView(true)
+        index = index > 0 ? --index : 0
+        updatePosition(divs[index])
+    })
+</script>
+</html>
