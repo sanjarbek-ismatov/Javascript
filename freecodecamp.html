@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form onsubmit="submit(this)">
+    <fieldset>
+        <legend>Your sex</legend>
+        <label><input type="radio" name="sex" value="male">Male</label>
+        <label> <input type="radio" name="sex" value="female">Female</label>
+    </fieldset>
+    <fieldset>
+        <legend>What's your favourite jobs?</legend>
+        <input name="job" id="programming" type="checkbox">
+        <label for="programming">Programming</label>
+        <input name="job" id="writing" type="checkbox">
+        <label for="writing">Writing</label>
+    </fieldset>
+    <button type="submit">Submit</button>
+</form>
+</body>
+<script>
+    function submit(e) {
+        e.preventDefault()
+        console.log(e)
+    }
+</script>
+</html>
