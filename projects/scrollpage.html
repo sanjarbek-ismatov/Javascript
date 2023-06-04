@@ -104,7 +104,8 @@
      * @param {number} xPosition
      */
     function positionMatcher(xPosition) {
-        console.log((index + 1) * SINGLE_HEIGHT)
+        const indexPosition = (divs.length - 1) * SINGLE_HEIGHT
+       
     }
 
     /**
@@ -123,5 +124,13 @@
         index = index > 0 ? --index : 0
         updatePosition(divs[index])
     })
+    buttonAfter.addEventListener('click', function () {
+        index = index < divs.length - 1 ? ++index : divs.length - 1
+        updatePosition(divs[index])
+    })
+    window.onscroll = function () {
+        const currentPosition = window.scrollY - document.body.querySelector('header').clientHeight
+        positionMatcher(currentPosition)
+    }
 </script>
 </html>
