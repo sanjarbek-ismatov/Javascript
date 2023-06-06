@@ -4,11 +4,16 @@
     <meta charset="UTF-8">
     <title>Scroll page</title>
     <style type="text/css">
+        html {
+            scroll-behavior: smooth;
+        }
+
         * {
             padding: 0;
             margin: 0;
             box-sizing: border-box;
             font-family: sans-serif;
+
         }
 
         header {
@@ -97,40 +102,41 @@
     const divs = document.querySelector('main').children
     let index = 3;
     const MAX_HEIGHT = document.documentElement.scrollHeight - document.body.querySelector('header').clientHeight;
-    const SINGLE_HEIGHT = divs[0].clientHeight
+    const SINGLE_HEIGHT = ~~divs[0].clientHeight
+    const PART_OF_SINGLE_POSITION = SINGLE_HEIGHT / 2;
 
     /**
      * detects position
      * @param {number} xPosition
      */
     function positionMatcher(xPosition) {
-        const indexPosition = (divs.length - 1) * SINGLE_HEIGHT
-       
+        const q = xPosition % SINGLE_HEIGHT
+        let currentIndex = ~~(xPosition / SINGLE_HEIGHT)
+        if (q >= PART_OF_SINGLE_POSITION) currentIndex++
+        return currentIndex
     }
 
     /**
      * position updater
      * @param {HTMLDivElement} elem
      */
-    function updatePosition(elem) {
-
-        // const currentIndex = MAX_HEIGHT / window.scrollY
-        // console.log(currentIndex)
-        positionMatcher(index)
-    }
 
     buttonBefore.addEventListener('click', function () {
-        // divs[index].scrollIntoView(true)
+
         index = index > 0 ? --index : 0
-        updatePosition(divs[index])
+        // divs[index].scrollIntoView({behavior: 'smooth'})
+        console.log(index)
+        window.scrollTo({left: 0, top: divs[index].offsetTop, behavior: 'smooth'})
+
     })
     buttonAfter.addEventListener('click', function () {
         index = index < divs.length - 1 ? ++index : divs.length - 1
-        updatePosition(divs[index])
+        // divs[index].scrollIntoView({behavior: 'smooth'})
+        window.scrollTo({left: 0, top: divs[index].offsetTop, behavior: 'smooth'})
     })
     window.onscroll = function () {
         const currentPosition = window.scrollY - document.body.querySelector('header').clientHeight
-        positionMatcher(currentPosition)
+        index = positionMatcher(currentPosition)
     }
 </script>
 </html>
