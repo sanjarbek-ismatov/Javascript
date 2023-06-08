@@ -323,12 +323,12 @@ const box = document.querySelector(".box");
 
 const button1 = document.getElementById("button1");
 const button2 = document.getElementById("button2");
-button1.onclick = function () {
-  // this.scrollIntoView({ behavior: "smooth", block: "center" });
-};
-button2.onclick = function () {
-  this.scrollIntoView(false);
-};
+// button1.onclick = function () {
+// this.scrollIntoView({ behavior: "smooth", block: "center" });
+// };
+// button2.onclick = function () {
+//   this.scrollIntoView(false);
+// };
 
 // disable scrolling
 
@@ -339,3 +339,77 @@ button2.onclick = function () {
 
 // more options for scrollTo and scrollBy
 // window.scrollTo({ behavior: "smooth", top: 100, left: 0 });
+// window.onmousemove = function (e) {
+//   console.log(document.elementFromPoint(e.clientX, e.clientY));
+// };
+
+// window.onmousemove = function (e) {
+//   console.log(e.clientX, e.clientY, "client");
+//   console.log(e.offsetX, e.offsetY, "offset");
+//   console.log(e.pageX, e.pageY, "page");
+// };
+
+// pageX, pageY - relative to html
+
+// clientX, clientY - relative to window
+
+// box.onclick = function (e) {
+//   //   call cordinates, height, width, top, bottom, left, right
+//   const cordinates = this.getBoundingClientRect();
+//   console.log(
+//     cordinates.x,
+//     cordinates.y,
+//     " the same as cordinates ",
+//     box.offsetTop,
+//     box.offsetLeft
+//   );
+//   console.log(
+//     cordinates.top,
+//     cordinates.left,
+//     cordinates.width,
+//     cordinates.height
+//   );
+//   //   the bottom and right isn't position, they are coordinates
+// };
+// const message = document.createElement("p");
+// document.body.append(message);
+// window.onclick = function (e) {
+//   const selectedPoint = document.elementFromPoint(e.clientX, e.clientY);
+//   const rect = selectedPoint.getBoundingClientRect();
+//   message.innerText = selectedPoint.textContent;
+//   message.style.position = "absolute";
+//   message.style.top = rect.bottom + "px";
+//   message.style.left = rect.left + "px";
+// };
+
+/**
+ *
+ * @param {HTMLElement} elem
+ */
+function getCord(elem) {
+  const rect = elem.getBoundingClientRect();
+  /* rect usually calculate position relative to window, if we want to get position relative to document, we should add pageYOffset and pageXOffset */
+  return {
+    top: rect.top + window.pageYOffset,
+    left: rect.left + window.pageXOffset,
+    bottom: rect.bottom + window.pageYOffset,
+    right: rect.right + window.pageXOffset,
+  };
+}
+
+/**
+ *
+ * @param {HTMLElement} elem
+ */
+function getCordWithoutRect(elem) {
+  return {
+    top: elem.offsetTop,
+    left: elem.offsetLeft,
+    bottom: elem.offsetTop + elem.offsetHeight,
+    right: elem.offsetLeft + elem.offsetWidth,
+  };
+}
+
+const cord = getCord(box);
+const cord2 = getCordWithoutRect(box);
+console.log(cord, cord2);
