@@ -1,0 +1,31 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+
+input, select, textarea {
+    width: 100%;
+    height: 40px;
+    outline: none;
+}
+
+input:focus, select:focus, textarea:focus {
+    border: 1px solid #80bdff;
+}
+
+.container {
+    max-width: 800px;
+    min-width: 600px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+#title, #description {
+    text-align: center;
+}
+
+input[type="radio"], input[type="checkbox"] {
+    width: unset;
+}
