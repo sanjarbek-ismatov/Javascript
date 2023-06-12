@@ -386,30 +386,30 @@ const button2 = document.getElementById("button2");
  *
  * @param {HTMLElement} elem
  */
-function getCord(elem) {
-  const rect = elem.getBoundingClientRect();
-  /* rect usually calculate position relative to window, if we want to get position relative to document, we should add pageYOffset and pageXOffset */
-  return {
-    top: rect.top + window.pageYOffset,
-    left: rect.left + window.pageXOffset,
-    bottom: rect.bottom + window.pageYOffset,
-    right: rect.right + window.pageXOffset,
-  };
-}
-
-/**
- *
- * @param {HTMLElement} elem
- */
-function getCordWithoutRect(elem) {
-  return {
-    top: elem.offsetTop,
-    left: elem.offsetLeft,
-    bottom: elem.offsetTop + elem.offsetHeight,
-    right: elem.offsetLeft + elem.offsetWidth,
-  };
-}
-
-const cord = getCord(box);
-const cord2 = getCordWithoutRect(box);
-console.log(cord, cord2);
+// function getCord(elem) {
+//   const rect = elem.getBoundingClientRect();
+//   /* rect usually calculate position relative to window, if we want to get position relative to document, we should add pageYOffset and pageXOffset */
+//   return {
+//     top: rect.top + window.pageYOffset,
+//     left: rect.left + window.pageXOffset,
+//     bottom: rect.bottom + window.pageYOffset,
+//     right: rect.right + window.pageXOffset,
+//   };
+// }
+//
+// /**
+//  *
+//  * @param {HTMLElement} elem
+//  */
+// function getCordWithoutRect(elem) {
+//   return {
+//     top: elem.offsetTop,
+//     left: elem.offsetLeft,
+//     bottom: elem.offsetTop + elem.offsetHeight,
+//     right: elem.offsetLeft + elem.offsetWidth,
+//   };
+// }
+//
+// const cord = getCord(box);
+// const cord2 = getCordWithoutRect(box);
+// console.log(cord, cord2);
