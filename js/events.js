@@ -20,6 +20,7 @@ clickableButton.addEventListener("contextmenu", function (e) {
 //   console.log("onclick");
 // };
 function handleClick(e) {
+  console.log(e.offsetLeft, e.offsetTop);
   console.log(e.innerText);
 }
 
@@ -52,3 +53,23 @@ window.addEventListener("keydown", function (e) {
       break;
   }
 });
+/**
+ * event is target-event
+ */
+document.addEventListener("DOMContentLoaded", function (e) {
+  console.log("DOM built");
+});
+// button2.onclick = function (event) {
+//   console.log(event.type + " at " + event.currentTarget);
+//   console.log("Coordinates: " + event.clientX + ":" + event.clientY);
+// };
+button2.addEventListener("click", function (event) {
+  console.log(event.clientX, event.offsetX);
+});
+
+function eventHandler(e) {
+  console.log("event called");
+}
+
+const button3 = document.getElementById("button3");
+button3.addEventListener("click");
