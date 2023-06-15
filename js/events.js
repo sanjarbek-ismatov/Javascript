@@ -67,9 +67,27 @@ button2.addEventListener("click", function (event) {
   console.log(event.clientX, event.offsetX);
 });
 
-function eventHandler(e) {
-  console.log("event called");
+// const eventHandler = {
+//   handleEvent(e) {
+//     console.log("event called");
+//   },
+// };
+class EventHandler {
+  handleEvent(e) {
+    const listenerType = "on" + e.type[0].toUpperCase() + e.type.slice(1);
+    this[listenerType](e);
+  }
+
+  onClick(e) {
+    console.log("click");
+  }
+
+  onMousedown(e) {
+    console.log("mousedown");
+  }
 }
 
+const eventHandler = new EventHandler();
 const button3 = document.getElementById("button3");
-button3.addEventListener("click");
+button3.addEventListener("click", eventHandler);
+button3.addEventListener("mousedown", eventHandler);
