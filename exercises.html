@@ -602,79 +602,314 @@
 <!--</body>-->
 <!--</html>-->
 
-<!DOCTYPE HTML>
-<html>
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
+
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <style>-->
+<!--        #field {-->
+<!--            width: 200px;-->
+<!--            height: 150px;-->
+<!--            border: 10px solid black;-->
+<!--            background-color: #00FF00;-->
+<!--            overflow: hidden;-->
+<!--            cursor: pointer;-->
+<!--            user-select: none;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+
+<!--<body style="height:2000px">-->
+
+<!--Click on a field to move the ball there.-->
+<!--<br> The ball should never leave the field.-->
+
+
+<!--<div id="field">-->
+<!--    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . . . . .-->
+<!--    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .-->
+<!--    . . . . . . . . . . . . . . . . . . . . . .-->
+<!--</div>-->
+
+
+<!--</body>-->
+<!--<script>-->
+<!--    const field = document.getElementById('field')-->
+<!--    const ball = document.getElementById('ball')-->
+<!--    const fieldRect = field.getBoundingClientRect()-->
+<!--    const fieldCoords = {-->
+<!--        top: fieldRect.top + field.clientTop,-->
+<!--        left: fieldRect.left + field.clientLeft,-->
+<!--        bottom: fieldRect.bottom - field.clientTop,-->
+<!--        right: fieldRect.right - field.clientLeft-->
+<!--    }-->
+<!--    console.log(fieldCoords)-->
+<!--    ball.style.cssText = `-->
+<!--        position: absolute;-->
+<!--        transition: .5s ease;-->
+<!--    `-->
+
+<!--    class EventHandle {-->
+<!--        handleEvent(e) {-->
+<!--            const method = "on" + e.type[0].toUpperCase() + e.type.slice(1)-->
+<!--            this[method](e)-->
+<!--        }-->
+
+<!--        onClick(e) {-->
+<!--            const ballCoords = {-->
+<!--                top: e.clientY - ball.clientHeight / 2,-->
+<!--                left: e.clientX - ball.clientWidth / 2-->
+<!--            }-->
+<!--            console.log(ballCoords, e.clientX)-->
+<!--            if (e.clientX < fieldCoords.left + ball.clientWidth) ballCoords.left = fieldCoords.left-->
+<!--            else if (e.clientX > fieldCoords.right - ball.clientWidth) ballCoords.left = fieldCoords.right - ball.clientWidth / 2-->
+<!--            if (e.clientY < fieldCoords.top + ball.clientHeight) ballCoords.top = fieldCoords.top-->
+<!--            else if (e.clientY > fieldCoords.bottom - ball.clientHeight) ballCoords.top = fieldCoords.bottom - ball.clientHeight / 2-->
+<!--            console.log(ballCoords)-->
+<!--            ball.style.top = ballCoords.top + "px"-->
+<!--            ball.style.left = ballCoords.left + "px"-->
+<!--        }-->
+<!--    }-->
+
+<!--    const eventHandle = new EventHandle()-->
+<!--    field.addEventListener('click', eventHandle)-->
+<!--</script>-->
+<!--</html>-->
+
+
+<!--<!DOCTYPE HTML>-->
+<!--<html>-->
+<!--<head>-->
+<!--    <meta charset="utf-8">-->
+<!--    <style>-->
+<!--        .menu ul {-->
+<!--            display: none;-->
+<!--        }-->
+
+<!--        .menu .title::before {-->
+<!--            content: "▶";-->
+<!--        }-->
+
+<!--        .menu.open .title::before {-->
+<!--            content: "▼";-->
+<!--        }-->
+
+<!--        .menu.open ul {-->
+<!--            display: block;-->
+<!--        }-->
+<!--    </style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<div class="menu">-->
+<!--    <p class="title">Sweeties (click me)!</p>-->
+<!--    <ul>-->
+<!--        <li>Cake</li>-->
+<!--        <li>Donut</li>-->
+<!--        <li>Honey</li>-->
+<!--    </ul>-->
+<!--</div>-->
+<!--</body>-->
+<!--<script>-->
+<!--    const toggle = document.body.firstChild-->
+<!--    // const div = document.createElement('div')-->
+<!--    // div.append(toggle)-->
+<!--    //-->
+<!--    // document.body.prepend(div)-->
+<!--    // const ul = document.querySelector('ul')-->
+<!--    // const [a, , b, ...fullText] = toggle.textContent.trim()-->
+<!--    // div.addEventListener('click', function () {-->
+<!--    //-->
+<!--    //     toggle.textContent = (ul.hidden ? b : a) + fullText.join('')-->
+<!--    //     ul.hidden = !ul.hidden-->
+<!--    //-->
+<!--    // })-->
+<!--    const menu = document.querySelector('.menu')-->
+<!--    menu.addEventListener('click', function () {-->
+<!--        menu.classList.toggle('open')-->
+<!--    })-->
+<!--</script>-->
+<!--</html>-->
+
+<!--<!DOCTYPE HTML>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+<!--    <title>Code</title>-->
+<!--    <link rel="stylesheet" type="text/css" href="messages.css">-->
+<!--    <meta charset="utf-8">-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--The button code (may need to adjust CSS):-->
+<!--<button class="remove-button">[x]</button>-->
+
+<!--<div>-->
+<!--    <div class="pane">-->
+<!--        <h3>Horse</h3>-->
+<!--        <p>The horse is one of two extant subspecies of Equus ferus. It is an odd-toed ungulate mammal belonging to the-->
+<!--            taxonomic family Equidae. The horse has evolved over the past 45 to 55 million years from a small multi-toed-->
+<!--            creature, Eohippus, into the large, single-toed animal of today.</p>-->
+<!--    </div>-->
+<!--    <div class="pane">-->
+<!--        <h3>Donkey</h3>-->
+<!--        <p>The donkey or ass (Equus africanus asinus) is a domesticated member of the horse family, Equidae. The wild-->
+<!--            ancestor of the donkey is the African wild ass, E. africanus. The donkey has been used as a working animal-->
+<!--            for at least 5000 years.</p>-->
+<!--    </div>-->
+<!--    <div class="pane">-->
+<!--        <h3>Cat</h3>-->
+<!--        <p>The domestic cat (Latin: Felis catus) is a small, typically furry, carnivorous mammal. They are often called-->
+<!--            house cats when kept as indoor pets or simply cats when there is no need to distinguish them from other-->
+<!--            felids and felines. Cats are often valued by humans for companionship and for their ability to hunt vermin.-->
+<!--        </p>-->
+<!--    </div>-->
+<!--</div>-->
+
+<!--</body>-->
+<!--<script>-->
+<!--    const h3s = document.querySelectorAll('h3')-->
+
+<!--    h3s.forEach((e) => {-->
+<!--        const span = document.createElement('span')-->
+<!--        span.textContent = "[x]"-->
+<!--        e.append(span)-->
+<!--    })-->
+<!--    const xButtons = document.querySelectorAll('span')-->
+<!--    xButtons.forEach(e => {-->
+<!--        e.addEventListener('click', function () {-->
+<!--            const container = e.parentElement.parentElement-->
+<!--            container.remove()-->
+<!--        })-->
+<!--    })-->
+<!--</script>-->
+<!--</html>-->
+
+<!DOCTYPE html>
 
 <head>
     <meta charset="utf-8">
-    <style>
-        #field {
-            width: 200px;
-            height: 150px;
-            border: 10px solid black;
-            background-color: #00FF00;
-            overflow: hidden;
-            cursor: pointer;
-            user-select: none;
+   <style>
+       *{
+           padding: 0;
+           margin: 0;
+           box-sizing: border-box;
+       }
+       body{
+           width: 100%;
+           height: 100vh;
+           background-color: gray;
+           display: flex;
+           justify-content: center;
+           align-items: center;
+       }
+       .arrow {
+           padding: 0;
+           background: #ddd;
+           border-radius: 15px;
+           border: 1px solid gray;
+           font-size: 24px;
+           line-height: 24px;
+           color: #444;
+           display: block;
+
+       }
+
+       .arrow:focus {
+           outline: none;
+       }
+
+       .arrow:hover {
+           background: #ccc;
+           cursor: pointer;
+       }
+
+       ul {
+           height: 130px;
+           width: 9999px;
+           margin: 0;
+           padding: 0;
+           list-style: none;
+           font-size: 0;
+           transition: 1s ease;
+       }
+
+       ul img {
+           width: 130px;
+           height: 130px;
+           display: block; /* removes extra space near images */
+       }
+
+       ul li {
+           display: inline-block; /* removes extra space between list items */
         }
-    </style>
+       #carousel{
+
+           padding: 10px;
+           background-color: #fff;
+           display: flex;
+           align-items: center;
+           border-radius: 30px;
+
+       }
+        .gallery{
+            width: 520px;
+            position: relative;
+            overflow: hidden;
+        }
+
+   </style>
 </head>
 
-<body style="height:2000px">
+<body>
 
-Click on a field to move the ball there.
-<br> The ball should never leave the field.
+<!-- create your markup and styles -->
+<div id="carousel">
+<button class="arrow">⇦</button>
 
 
-<div id="field">
-    <img src="https://en.js.cx/clipart/ball.svg" id="ball"> . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-    . . . . . . . . .
-    . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .
-    . . . . . . . . . . . . . . . . . . . . . .
+<div class="gallery">
+<ul>
+    <li><img src="https://en.js.cx/carousel/1.png"></li>
+    <li><img src="https://en.js.cx/carousel/2.png"></li>
+    <li><img src="https://en.js.cx/carousel/3.png"></li>
+    <li><img src="https://en.js.cx/carousel/4.png"></li>
+    <li><img src="https://en.js.cx/carousel/5.png"></li>
+    <li><img src="https://en.js.cx/carousel/6.png"></li>
+    <li><img src="https://en.js.cx/carousel/7.png"></li>
+    <li><img src="https://en.js.cx/carousel/8.png"></li>
+    <li><img src="https://en.js.cx/carousel/9.png"></li>
+    <li><img src="https://en.js.cx/carousel/10.png"></li>
+</ul>
+</div>
+    <button class="arrow">⇨</button>
 </div>
 
+<script>
+    // label the images to visually track them, just for convenience,
+    // this code can be removed
+    const gallery = document.querySelector('.gallery')
+    const ul = document.querySelector('ul')
+    let position = 0;
+    const width = document.querySelector('img').clientWidth
+
+    const [prev, next] = document.querySelectorAll('.arrow')
+    prev.addEventListener('click', function(){
+        position += (width * 4)
+        position = Math.min(position, 0)
+        ul.style.marginLeft = position + "px"
+    })
+    next.addEventListener('click', function(){
+        position -= (width * 4)
+        position = Math.max(position, (ul.children.length - 4) * -width)
+        ul.style.marginLeft = position + "px"
+
+    })
+    // ...your code to make carousel alive!
+</script>
 
 </body>
-<script>
-    const field = document.getElementById('field')
-    const ball = document.getElementById('ball')
-    const fieldRect = field.getBoundingClientRect()
-    const fieldCoords = {
-        top: fieldRect.top + field.clientTop,
-        left: fieldRect.left + field.clientLeft,
-        bottom: fieldRect.bottom - field.clientTop,
-        right: fieldRect.right - field.clientLeft
-    }
-    console.log(fieldCoords)
-    ball.style.cssText = `
-        position: absolute;
-        transition: .5s ease;
-    `
-
-    class EventHandle {
-        handleEvent(e) {
-            const method = "on" + e.type[0].toUpperCase() + e.type.slice(1)
-            this[method](e)
-        }
-
-        onClick(e) {
-            const ballCoords = {
-                top: e.clientY - ball.clientHeight / 2,
-                left: e.clientX - ball.clientWidth / 2
-            }
-            console.log(ballCoords, e.clientX)
-            if (e.clientX < fieldCoords.left + ball.clientWidth) ballCoords.left = fieldCoords.left
-            else if (e.clientX > fieldCoords.right - ball.clientWidth) ballCoords.left = fieldCoords.right - ball.clientWidth / 2
-            if (e.clientY < fieldCoords.top + ball.clientHeight) ballCoords.top = fieldCoords.top
-            else if (e.clientY > fieldCoords.bottom - ball.clientHeight) ballCoords.top = fieldCoords.bottom - ball.clientHeight / 2
-            console.log(ballCoords)
-            ball.style.top = ballCoords.top + "px"
-            ball.style.left = ballCoords.left + "px"
-        }
-    }
-
-    const eventHandle = new EventHandle()
-    field.addEventListener('click', eventHandle)
-</script>
 </html>
