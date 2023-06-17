@@ -72,22 +72,49 @@ button2.addEventListener("click", function (event) {
 //     console.log("event called");
 //   },
 // };
-class EventHandler {
-  handleEvent(e) {
-    const listenerType = "on" + e.type[0].toUpperCase() + e.type.slice(1);
-    this[listenerType](e);
-  }
+// class EventHandler {
+//   handleEvent(e) {
+//     const listenerType = "on" + e.type[0].toUpperCase() + e.type.slice(1);
+//     this[listenerType](e);
+//   }
+//
+//   onClick(e) {
+//     console.log("click");
+//   }
+//
+//   onMousedown(e) {
+//     console.log("mousedown");
+//   }
+// }
+//
+// const eventHandler = new EventHandler();
+// const button3 = document.getElementById("button3");
+// button3.addEventListener("click", eventHandler);
+// button3.addEventListener("mousedown", eventHandler);
 
-  onClick(e) {
-    console.log("click");
-  }
+/**
+ * Capturing and bubbling
+ */
+// button2.addEventListener("click", function (event) {
+//   console.log(this.textContent);
+//   console.log(event.currentTarget.textContent);
+// });
 
-  onMousedown(e) {
-    console.log("mousedown");
-  }
-}
-
-const eventHandler = new EventHandler();
-const button3 = document.getElementById("button3");
-button3.addEventListener("click", eventHandler);
-button3.addEventListener("mousedown", eventHandler);
+const main = document.getElementById("main");
+const button = document.querySelector("#button");
+// main.onclick = function (e) {
+//   // console.log("target is ", e.target.innerText); // child
+//   console.log("this is ", this);
+// };
+button.addEventListener("click", function (e) {
+  // e.stopPropagation(); // stops capturing and bubbling
+  console.log("child");
+});
+main.addEventListener(
+  "click",
+  function (e) {
+    console.log("parent", e.target.tagName);
+    console.log(e.eventPhase);
+  },
+  false
+);

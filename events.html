@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <title>Browser events</title>
+    <style>
+        #main {
+            width: 300px;
+            height: 300px;
+            background-color: lightblue;
+        }
+
+    </style>
 </head>
 <body>
 <button onclick="handleClick(this)" id="clickable">Click me</button>
 <button id="button2">Click me 2</button>
 <button id="button3">Click me 3</button>
 <button ondblclick="console.log(this.innerText)">I'll lose when you click me</button>
+<main id="main">
+    <div>
+        <!-- Propagation is stopped-->
+        <button id="button">Capture</button>
+    </div>
+</main>
 </body>
 <script src="js/events.js"></script>
 </html>
