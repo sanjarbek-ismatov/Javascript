@@ -106,15 +106,61 @@ const button = document.querySelector("#button");
 //   // console.log("target is ", e.target.innerText); // child
 //   console.log("this is ", this);
 // };
-button.addEventListener("click", function (e) {
-  // e.stopPropagation(); // stops capturing and bubbling
-  console.log("child");
-});
-main.addEventListener(
-  "click",
-  function (e) {
-    console.log("parent", e.target.tagName);
-    console.log(e.eventPhase);
-  },
-  false
-);
+// button.addEventListener("click", function (e) {
+//   // e.stopPropagation(); // stops capturing and bubbling
+//   console.log("child");
+// });
+// main.addEventListener(
+//   "click",
+//   function (e) {
+//     // console.log("parent", e.target.tagName);
+//     // console.log(e.eventPhase);
+//   },
+//   false
+// );
+
+// const table = document.querySelector("table");
+// let selected;
+// table.addEventListener("click", function (e) {
+//   console.log(e.target.tagName, e.target.closest("td").tagName);
+//   const td = e.target.closest("td");
+//   if (!td) return;
+//   if (!table.contains(td)) return;
+//   highLighter(td);
+// });
+//
+// function highLighter(elem) {
+//   if (selected) selected.classList.remove("red");
+//   if (elem.tagName !== "TD") return;
+//   selected = elem;
+//   selected.classList.add("red");
+// }
+
+const div = document.getElementById("div");
+
+class Menu {
+  constructor(elem) {
+    this._elem = elem;
+    elem.onclick = this.onClick.bind(this);
+  }
+
+  onClick(event) {
+    const action = event.target.dataset.action;
+    const text = event.target.dataset.text;
+    this[action](text);
+  }
+
+  load(value) {
+    alert(value);
+  }
+
+  refresh(value) {
+    alert(value);
+  }
+
+  delete(value) {
+    alert(value);
+  }
+}
+
+new Menu(div);

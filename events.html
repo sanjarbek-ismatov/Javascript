@@ -10,6 +10,10 @@
             background-color: lightblue;
         }
 
+        .red {
+            background-color: red;
+        }
+
     </style>
 </head>
 <body>
@@ -21,8 +25,25 @@
     <div>
         <!-- Propagation is stopped-->
         <button id="button">Capture</button>
+        <table border="1">
+            <tr>
+                <td>Hi</td>
+                <td>Hello</td>
+            </tr>
+            <tr>
+                <td>Hi2</td>
+                <td><strong>He</strong>llo2</td>
+            </tr>
+        </table>
+
     </div>
 </main>
+<div id="div">
+    <button data-action="load" data-text="Loading...">Load</button>
+    <button data-action="delete" data-text="Deleting...">Delete</button>
+    <button data-action="refresh" data-text="Refreshing...">Refresh</button>
+
+</div>
 </body>
 <script src="js/events.js"></script>
 </html>
