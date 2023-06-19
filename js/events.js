@@ -136,31 +136,48 @@ const button = document.querySelector("#button");
 //   selected.classList.add("red");
 // }
 
-const div = document.getElementById("div");
+// const div = document.getElementById("div");
+//
+// class Menu {
+//   constructor(elem) {
+//     this._elem = elem;
+//     elem.onclick = this.onClick.bind(this);
+//   }
+//
+//   onClick(event) {
+//     const action = event.target.dataset.action;
+//     const text = event.target.dataset.text;
+//     this[action](text);
+//   }
+//
+//   load(value) {
+//     alert(value);
+//   }
+//
+//   refresh(value) {
+//     alert(value);
+//   }
+//
+//   delete(value) {
+//     alert(value);
+//   }
+// }
+//
+// new Menu(div);
 
-class Menu {
-  constructor(elem) {
-    this._elem = elem;
-    elem.onclick = this.onClick.bind(this);
-  }
+// const buttonInput = document.querySelector('input[type="button"]');
+// const buttonButton = document.querySelector("#counter-btn");
+// document.addEventListener("click", function (event) {
+//   const currentElement = event.target;
+//
+//   if (currentElement.dataset.counter !== undefined) {
+//     currentElement.value++;
+//   }
+// });
 
-  onClick(event) {
-    const action = event.target.dataset.action;
-    const text = event.target.dataset.text;
-    this[action](text);
-  }
-
-  load(value) {
-    alert(value);
-  }
-
-  refresh(value) {
-    alert(value);
-  }
-
-  delete(value) {
-    alert(value);
-  }
-}
-
-new Menu(div);
+document.addEventListener("click", function (event) {
+  const id = event.target.dataset.toggleId;
+  if (!id) return;
+  const elem = document.getElementById(id);
+  elem.hidden = !elem.hidden;
+});
