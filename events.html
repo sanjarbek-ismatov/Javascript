@@ -14,6 +14,10 @@
             background-color: red;
         }
 
+        #draggable-btn {
+            position: absolute;
+        }
+
     </style>
 </head>
 <body>
@@ -47,7 +51,10 @@
 <button id="counter-btn" value="1" onclick="this.textContent = this.value" data-counter>0</button>
 <input type="button" value="1" data-counter>
 <button data-toggle-id="email-input">Toggle</button>
-<input type="email" id="email-input">
+<input onfocus="this.value = ''" type="email" id="email-input" value="Focus">
+<input onfocus="this.value = ''" onmousedown="return false" value="You can't remove me">
+<button id="draggable-btn">Draggable button</button>
+<a href="https://google.com">Google</a>
 </body>
 <script src="js/events.js"></script>
 </html>

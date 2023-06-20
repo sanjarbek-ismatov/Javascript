@@ -175,9 +175,41 @@ const button = document.querySelector("#button");
 //   }
 // });
 
-document.addEventListener("click", function (event) {
-  const id = event.target.dataset.toggleId;
-  if (!id) return;
-  const elem = document.getElementById(id);
-  elem.hidden = !elem.hidden;
+// document.addEventListener("click", function (event) {
+//   const id = event.target.dataset.toggleId;
+//   if (!id) return;
+//   const elem = document.getElementById(id);
+//   elem.hidden = !elem.hidden;
+// });
+
+const a = document.querySelector("a");
+a.onclick = function (e) {
+  // e.preventDefault(); default action is disabled
+  return false; // it also disables
+};
+
+const draggableButton = document.querySelector("#draggable-btn");
+
+/**
+ *
+ * @param {MouseEvent} e
+ */
+function dragMouseMove(e) {
+  e.currentTarget.style.top =
+    e.clientY - e.currentTarget.clientHeight / 2 + "px";
+  e.currentTarget.style.left =
+    e.clientX - e.currentTarget.clientWidth / 2 + "px";
+}
+
+/**
+ *
+ * @param {MouseEvent} e
+ */
+function dragMove(e) {
+  e.currentTarget.addEventListener("mousemove", dragMouseMove);
+}
+
+draggableButton.addEventListener("mousedown", dragMove);
+draggableButton.addEventListener("mouseup", function () {
+  draggableButton.removeEventListener("mousemove", dragMouseMove);
 });
