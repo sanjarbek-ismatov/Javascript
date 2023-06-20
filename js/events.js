@@ -182,12 +182,12 @@ const button = document.querySelector("#button");
 //   elem.hidden = !elem.hidden;
 // });
 
-const a = document.querySelector("a");
-a.onclick = function (e) {
-  // e.preventDefault(); default action is disabled
-  return false; // it also disables
-};
-
+// const a = document.querySelector("a");
+// a.onclick = function (e) {
+//   // e.preventDefault(); default action is disabled
+//   return false; // it also disables
+// };
+//
 const draggableButton = document.querySelector("#draggable-btn");
 
 /**
@@ -212,4 +212,16 @@ function dragMove(e) {
 draggableButton.addEventListener("mousedown", dragMove);
 draggableButton.addEventListener("mouseup", function () {
   draggableButton.removeEventListener("mousemove", dragMouseMove);
+});
+
+const contextBtn = document.querySelector("#context-btn");
+
+document.addEventListener("contextmenu", function (e) {
+  if (e.defaultPrevented) return;
+
+  console.log("your context menu is fucked by CoderX");
+});
+contextBtn.addEventListener("contextmenu", function (e) {
+  e.preventDefault();
+  console.log("button context");
 });
