@@ -53,7 +53,7 @@
   </tr>
 </table>
 <script>
-  let table = document.body.firstElementChild;
+  let table = Document.body.firstElementChild;
   const rows = Array.from(table.rows)
   for (let i = 0; i < rows.length; i++)
   {
@@ -85,7 +85,7 @@
 
 <!--<script>-->
 <!--  // ...your code...-->
-<!--  const links = document.querySelectorAll('a');-->
+<!--  const links = Document.querySelectorAll('a');-->
 
 <!--  for (let elem of links){-->
 <!--    const href = elem.getAttribute('href')-->
@@ -159,10 +159,10 @@
 <!--    };-->
 
 <!--    function splitter(data) {-->
-<!--        const ul = document.createElement('ul')-->
+<!--        const ul = Document.createElement('ul')-->
 <!--        if (!Object.keys(data).length) return;-->
 <!--        for (let key in data) {-->
-<!--            const li = document.createElement('li')-->
+<!--            const li = Document.createElement('li')-->
 <!--            li.textContent = key-->
 <!--            const childrenUl = splitter(data[key])-->
 <!--            if (childrenUl) li.append(childrenUl)-->
@@ -176,7 +176,7 @@
 <!--        container.append(body)-->
 <!--    }-->
 
-<!--    createTree(document.getElementById('tree'), data);-->
+<!--    createTree(Document.getElementById('tree'), data);-->
 <!--</script>-->
 
 <!--</body>-->
@@ -224,7 +224,7 @@
 <!--</ul>-->
 
 <!--<script>-->
-<!--    const lis = document.getElementsByTagName('li')-->
+<!--    const lis = Document.getElementsByTagName('li')-->
 <!--    for (const li of lis) {-->
 <!--        const lengthofLi = li.getElementsByTagName('li').length-->
 <!--        if (lengthofLi) li.firstChild.textContent += ' [' + lengthofLi + ']';-->
@@ -265,9 +265,9 @@
 <!--<div id="calendar"></div>-->
 
 <!--<script>-->
-<!--    const yearInput = document.getElementById('year')-->
-<!--    const monthInput = document.getElementById('month')-->
-<!--    const submitButton = document.getElementById('submit-button')-->
+<!--    const yearInput = Document.getElementById('year')-->
+<!--    const monthInput = Document.getElementById('month')-->
+<!--    const submitButton = Document.getElementById('submit-button')-->
 <!--    submitButton.addEventListener('click', function () {-->
 <!--        createCalendar(calendar, +yearInput.value, +monthInput.value)-->
 <!--    })-->
@@ -282,13 +282,13 @@
 <!--    function createCalendar(elem, year, month) {-->
 
 <!--        // ...your code that generates the calndar in elem...-->
-<!--        const table = document.createElement('table')-->
+<!--        const table = Document.createElement('table')-->
 <!--        const daysOfTheWeek = ["MO", "TU", "WE", "TH", "FR", "SA", "SU"]-->
 <!--        const dates = getDaysOfMonth(year, month)-->
-<!--        const tr = document.createElement('tr')-->
+<!--        const tr = Document.createElement('tr')-->
 <!--        const startDay = (new Date(`${year}.${month}`).getDay() + 6) % 7-->
 <!--        for (let day of daysOfTheWeek) {-->
-<!--            const th = document.createElement('th')-->
+<!--            const th = Document.createElement('th')-->
 <!--            th.innerText = day-->
 <!--            tr.append(th)-->
 <!--        }-->
@@ -297,11 +297,11 @@
 <!--        let currentDay = 1;-->
 <!--        let index = 0;-->
 <!--        for (let i = 0; i < trLengths; i++) {-->
-<!--            const tr = document.createElement('tr')-->
+<!--            const tr = Document.createElement('tr')-->
 <!--            const tdLen = dates - currentDay >= 7 ? 7 : dates - currentDay + 1-->
 <!--            for (let j = 0; j < tdLen; j++) {-->
 
-<!--                const td = document.createElement('td')-->
+<!--                const td = Document.createElement('td')-->
 <!--                if (index >= startDay) {-->
 <!--                    td.textContent = currentDay-->
 <!--                    currentDay++-->
@@ -335,8 +335,8 @@
 <!--</body>-->
 <!--<script>-->
 
-<!--    const p = document.createElement('p')-->
-<!--    const [hh, mm, ss] = [1, 2, 3].map(e => document.createElement('span'))-->
+<!--    const p = Document.createElement('p')-->
+<!--    const [hh, mm, ss] = [1, 2, 3].map(e => Document.createElement('span'))-->
 <!--    hh.style.color = "red"-->
 <!--    hh.innerText = "hh"-->
 <!--    mm.style.color = "green"-->
@@ -361,7 +361,7 @@
 <!--    }-->
 
 <!--    p.append(hh, ":", mm, ":", ss)-->
-<!--    document.body.prepend(p)-->
+<!--    Document.body.prepend(p)-->
 <!--</script>-->
 <!--</html>-->
 
@@ -401,7 +401,7 @@
 
 <!--<script>-->
 <!--    // ... your code ...-->
-<!--    const table = document.getElementById('table')-->
+<!--    const table = Document.getElementById('table')-->
 <!--    const sorted = Array.from(table.tBodies[0].rows).sort((rowA, rowB) => rowA.cells[0].innerText.localeCompare(rowB.cells[0].innerText))-->
 <!--    table.tBodies[0].innerHTML = ""-->
 <!--    table.tBodies[0].append(...sorted)-->
@@ -431,13 +431,13 @@
 <!--<script>-->
 <!--    function showNotification({top = 0, right = 0, className, html}) {-->
 <!--        /* your code */-->
-<!--        const notification = document.createElement('div')-->
+<!--        const notification = Document.createElement('div')-->
 <!--        notification.classList.add('notification')-->
 <!--        className && notification.classList.add(className)-->
 <!--        notification.innerHTML = html-->
 <!--        notification.style.top = top-->
 <!--        notification.style.right = right-->
-<!--        document.body.append(notification)-->
+<!--        Document.body.append(notification)-->
 <!--    }-->
 
 <!--    // test it-->
@@ -526,7 +526,7 @@
 <!--     * @param {string} position One of: top/right/bottom-->
 <!--     * @param {HTMLElement} elem       Element to position-->
 <!--     *-->
-<!--     * Both elements: elem and anchor must be in the document-->
+<!--     * Both elements: elem and anchor must be in the Document-->
 <!--     */-->
 <!--    function positionAt(anchor, position, elem) {-->
 <!--        // ... your code ...-->
@@ -582,16 +582,16 @@
 <!--     */-->
 <!--    function showNote(anchor, position, html) {-->
 
-<!--        let note = document.createElement('div');-->
+<!--        let note = Document.createElement('div');-->
 <!--        note.className = "note";-->
 <!--        note.innerHTML = html;-->
-<!--        document.body.append(note);-->
+<!--        Document.body.append(note);-->
 
 <!--        positionAt(anchor, position, note);-->
 <!--    }-->
 
 <!--    // test it-->
-<!--    let blockquote = document.querySelector('blockquote');-->
+<!--    let blockquote = Document.querySelector('blockquote');-->
 
 <!--    showNote(blockquote, "top-in", "note above");-->
 <!--    showNote(blockquote, "right-in", "note at the right");-->
@@ -637,8 +637,8 @@
 
 <!--</body>-->
 <!--<script>-->
-<!--    const field = document.getElementById('field')-->
-<!--    const ball = document.getElementById('ball')-->
+<!--    const field = Document.getElementById('field')-->
+<!--    const ball = Document.getElementById('ball')-->
 <!--    const fieldRect = field.getBoundingClientRect()-->
 <!--    const fieldCoords = {-->
 <!--        top: fieldRect.top + field.clientTop,-->
@@ -713,12 +713,12 @@
 <!--</div>-->
 <!--</body>-->
 <!--<script>-->
-<!--    const toggle = document.body.firstChild-->
-<!--    // const div = document.createElement('div')-->
+<!--    const toggle = Document.body.firstChild-->
+<!--    // const div = Document.createElement('div')-->
 <!--    // div.append(toggle)-->
 <!--    //-->
-<!--    // document.body.prepend(div)-->
-<!--    // const ul = document.querySelector('ul')-->
+<!--    // Document.body.prepend(div)-->
+<!--    // const ul = Document.querySelector('ul')-->
 <!--    // const [a, , b, ...fullText] = toggle.textContent.trim()-->
 <!--    // div.addEventListener('click', function () {-->
 <!--    //-->
@@ -726,7 +726,7 @@
 <!--    //     ul.hidden = !ul.hidden-->
 <!--    //-->
 <!--    // })-->
-<!--    const menu = document.querySelector('.menu')-->
+<!--    const menu = Document.querySelector('.menu')-->
 <!--    menu.addEventListener('click', function () {-->
 <!--        menu.classList.toggle('open')-->
 <!--    })-->
@@ -771,14 +771,14 @@
 
 <!--</body>-->
 <!--<script>-->
-<!--    const h3s = document.querySelectorAll('h3')-->
+<!--    const h3s = Document.querySelectorAll('h3')-->
 
 <!--    h3s.forEach((e) => {-->
-<!--        const span = document.createElement('span')-->
+<!--        const span = Document.createElement('span')-->
 <!--        span.textContent = "[x]"-->
 <!--        e.append(span)-->
 <!--    })-->
-<!--    const xButtons = document.querySelectorAll('span')-->
+<!--    const xButtons = Document.querySelectorAll('span')-->
 <!--    xButtons.forEach(e => {-->
 <!--        e.addEventListener('click', function () {-->
 <!--            const container = e.parentElement.parentElement-->
@@ -891,12 +891,12 @@
 <!--<script>-->
 <!--    // label the images to visually track them, just for convenience,-->
 <!--    // this code can be removed-->
-<!--    const gallery = document.querySelector('.gallery')-->
-<!--    const ul = document.querySelector('ul')-->
+<!--    const gallery = Document.querySelector('.gallery')-->
+<!--    const ul = Document.querySelector('ul')-->
 <!--    let position = 0;-->
-<!--    const width = document.querySelector('img').clientWidth-->
+<!--    const width = Document.querySelector('img').clientWidth-->
 
-<!--    const [prev, next] = document.querySelectorAll('.arrow')-->
+<!--    const [prev, next] = Document.querySelectorAll('.arrow')-->
 <!--    prev.addEventListener('click', function(){-->
 <!--        position += (width * 4)-->
 <!--        position = Math.min(position, 0)-->
@@ -960,7 +960,7 @@
 
 <!--</body>-->
 <!--<script>-->
-<!--    document.addEventListener('click', function (event) {-->
+<!--    Document.addEventListener('click', function (event) {-->
 <!--        const target = event.target;-->
 <!--        if (target.tagName !== 'LI') return;-->
 <!--        Array.from(target.children).forEach(e => e.hidden = !e.hidden)-->
@@ -1029,7 +1029,7 @@
 
 <!--<script>-->
 <!--    // ...your code...-->
-<!--    const table = document.getElementById('grid')-->
+<!--    const table = Document.getElementById('grid')-->
 <!--    const ths = Array.from(table.tHead.rows[0].cells)-->
 
 <!--    ths.forEach((e, i) => e.addEventListener('click', function () {-->
@@ -1044,8 +1044,8 @@
 <!--            }-->
 <!--        })-->
 <!--        table.innerHTML = ""-->
-<!--        const tBodyNew = document.createElement('tbody')-->
-<!--        const tHeadNew = document.createElement('thead')-->
+<!--        const tBodyNew = Document.createElement('tbody')-->
+<!--        const tHeadNew = Document.createElement('thead')-->
 <!--        tBodyNew.append(...trs)-->
 <!--        tHeadNew.append(...ths)-->
 <!--        table.append(tHeadNew)-->
@@ -1096,13 +1096,13 @@
 
 
 <!--<script>-->
-<!--    document.addEventListener('mouseover', function (event) {-->
+<!--    Document.addEventListener('mouseover', function (event) {-->
 <!--        const target = event.target;-->
 <!--        if (target.tagName !== 'BUTTON') return;-->
-<!--        const tooltip = document.createElement('span')-->
+<!--        const tooltip = Document.createElement('span')-->
 <!--        tooltip.innerHTML = target.dataset.tooltip-->
 <!--        tooltip.className = "tooltip"-->
-<!--        document.body.append(tooltip)-->
+<!--        Document.body.append(tooltip)-->
 <!--        const rect = target.getBoundingClientRect()-->
 <!--        tooltip.style.top = rect.top - tooltip.clientHeight - 5 + 'px'-->
 <!--        if (tooltip.clientWidth > target.clientWidth)-->
