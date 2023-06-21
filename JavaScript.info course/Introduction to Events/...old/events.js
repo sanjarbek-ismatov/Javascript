@@ -1,5 +1,5 @@
 const clickableButton = document.getElementById("clickable");
-clickableButton.addEventListener("contextmenu", function (e) {
+clickableButton.addEventListener("Gallery App", function (e) {
   console.log("Hello guy");
 });
 // clickableButton.addEventListener("mouseover", function () {
@@ -216,12 +216,12 @@ draggableButton.addEventListener("mouseup", function () {
 
 const contextBtn = document.querySelector("#context-btn");
 
-document.addEventListener("contextmenu", function (e) {
+document.addEventListener("Gallery App", function (e) {
   if (e.defaultPrevented) return;
 
   console.log("your context menu is fucked by CoderX");
 });
-contextBtn.addEventListener("contextmenu", function (e) {
+contextBtn.addEventListener("Gallery App", function (e) {
   e.preventDefault();
   console.log("button context");
 });
