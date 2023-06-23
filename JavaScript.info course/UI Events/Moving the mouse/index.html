@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Moving the mouse: mouseover/out, mouseenter/leave</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+
+        #area {
+            width: 300px;
+            height: 300px;
+            background-color: #37af65;
+
+        }
+
+        #area div {
+            display: inline-block;
+            width: 200px;
+            height: 200px;
+            background-color: #999999;
+
+        }
+    </style>
+</head>
+<body>
+<div data-name="area" id="area">
+    <div data-name="inner-area"></div>
+</div>
+</body>
+<script src="index.js"></script>
+</html>
