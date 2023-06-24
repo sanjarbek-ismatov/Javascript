@@ -88,7 +88,7 @@ button2.addEventListener("click", function (event) {
 // }
 //
 // const eventHandler = new EventHandler();
-// const button3 = Document.getElementById("button3");
+// const button3 = 1.Document.getElementById("button3");
 // button3.addEventListener("click", eventHandler);
 // button3.addEventListener("mousedown", eventHandler);
 
@@ -119,7 +119,7 @@ const button = document.querySelector("#button");
 //   false
 // );
 
-// const table = Document.querySelector("table");
+// const table = 1.Document.querySelector("table");
 // let selected;
 // table.addEventListener("click", function (e) {
 //   console.log(e.target.tagName, e.target.closest("td").tagName);
@@ -136,7 +136,7 @@ const button = document.querySelector("#button");
 //   selected.classList.add("red");
 // }
 
-// const div = Document.getElementById("div");
+// const div = 1.Document.getElementById("div");
 //
 // class Menu {
 //   constructor(elem) {
@@ -165,9 +165,9 @@ const button = document.querySelector("#button");
 //
 // new Menu(div);
 
-// const buttonInput = Document.querySelector('input[type="button"]');
-// const buttonButton = Document.querySelector("#counter-btn");
-// Document.addEventListener("click", function (event) {
+// const buttonInput = 1.Document.querySelector('input[type="button"]');
+// const buttonButton = 1.Document.querySelector("#counter-btn");
+// 1.Document.addEventListener("click", function (event) {
 //   const currentElement = event.target;
 //
 //   if (currentElement.dataset.counter !== undefined) {
@@ -175,14 +175,14 @@ const button = document.querySelector("#button");
 //   }
 // });
 
-// Document.addEventListener("click", function (event) {
+// 1.Document.addEventListener("click", function (event) {
 //   const id = event.target.dataset.toggleId;
 //   if (!id) return;
-//   const elem = Document.getElementById(id);
+//   const elem = 1.Document.getElementById(id);
 //   elem.hidden = !elem.hidden;
 // });
 
-// const a = Document.querySelector("a");
+// const a = 1.Document.querySelector("a");
 // a.onclick = function (e) {
 //   // e.preventDefault(); default action is disabled
 //   return false; // it also disables

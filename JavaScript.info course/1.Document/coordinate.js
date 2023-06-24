@@ -21,7 +21,7 @@ if(confirm("You're bro?")) alert("Change yourself")
 else alert("Good luck")
 */
 
-// console.log(Document.body.offsetHeight)
+// console.log(1.Document.body.offsetHeight)
 
 /**
  * DOM order
@@ -29,14 +29,14 @@ else alert("Good luck")
  */
 
 // html tag
-// console.log(Document.documentElement)
+// console.log(1.Document.documentElement)
 // body tag
-// console.log(Document.body)
+// console.log(1.Document.body)
 // head
-// console.log(Document.head)
-// const firstParagraph = Document.getElementById('p')
-// const empty = Document.getElementById('empty')
-// const divider = Document.getElementById('div')
+// console.log(1.Document.head)
+// const firstParagraph = 1.Document.getElementById('p')
+// const empty = 1.Document.getElementById('empty')
+// const divider = 1.Document.getElementById('div')
 // call parent of paragrahp
 // console.log(firstParagraph.parentNode)
 
@@ -64,8 +64,8 @@ else alert("Good luck")
 // const arr = Array.from(divider.childNodes)
 
 // head's brother is body
-// console.log(Document.head.nextElementSibling) // body
-// console.log(Document.body.previousElementSibling) // head
+// console.log(1.Document.head.nextElementSibling) // body
+// console.log(1.Document.body.previousElementSibling) // head
 
 // calling only elements
 // console.log(firstParagraph.parentElement)
@@ -76,7 +76,7 @@ else alert("Good luck")
 // children.forEach(e => console.log(e))
 
 /**
- * Only if we call Document.documentElement.parentNode, it's working wrong, because <!DOCTYPE html> is parent of html tag
+ * Only if we call 1.Document.documentElement.parentNode, it's working wrong, because <!DOCTYPE html> is parent of html tag
  */
 
 /**
@@ -84,19 +84,19 @@ else alert("Good luck")
  */
 
 // Both of these the same
-// const empty = Document.getElementById('empty')
+// const empty = 1.Document.getElementById('empty')
 // console.log(empty)
 
 /**
  * querySelector matches also css selectors
  */
 
-// const lastParagraphWithSelector = Document.querySelector('div > p:hover')
+// const lastParagraphWithSelector = 1.Document.querySelector('div > p:hover')
 // console.log(lastParagraphWithSelector)
 
 // checks that img have src with ending png
 /*
-for(const elem of Document.body.children)
+for(const elem of 1.Document.body.children)
 {
     console.log("Parent element",elem)
     if(elem.hasChildNodes()){
@@ -108,23 +108,23 @@ for(const elem of Document.body.children)
 }
 */
 
-// const child = Document.querySelector('#div > p')
+// const child = 1.Document.querySelector('#div > p')
 // console.log(child.closest('html'))
 
-// console.log(Document.getElementsByName('hello'))
+// console.log(1.Document.getElementsByName('hello'))
 
-// console.log(Document.nodeName) // #Document
-// console.log(Document.body.tagName) // BODY
+// console.log(1.Document.nodeName) // #1.Document
+// console.log(1.Document.body.tagName) // BODY
 
-// const empty = Document.querySelector('#empty')
+// const empty = 1.Document.querySelector('#empty')
 // empty.outerHTML = `
 //     <ul id="empty">
 //         <li>First</li>
 //     </ul>
 // `
-// const list = Document.getElementById('empty')
+// const list = 1.Document.getElementById('empty')
 
-// const div = Document.getElementById('div')
+// const div = 1.Document.getElementById('div')
 // console.log(div.firstChild.data)
 // div.hidden = true // this method hides the element
 const input = document.getElementById("input");
@@ -143,16 +143,16 @@ const input = document.getElementById("input");
 // }
 // console.log("Hello".reverse())
 
-// console.log(Document.body.hasAttributes())
-// Document.body.getAttribute("attribute name")
-// Document.body.setAttribute('propety', 'value')
-// Document.body.removeAttribute('name of need remove attribute')
+// console.log(1.Document.body.hasAttributes())
+// 1.Document.body.getAttribute("attribute name")
+// 1.Document.body.setAttribute('propety', 'value')
+// 1.Document.body.removeAttribute('name of need remove attribute')
 
 // for(const attr of input.attributes){
 //     console.log(attr.name, attr.value)
 // }
 
-// const button = Document.querySelector('button')
+// const button = 1.Document.querySelector('button')
 // console.log(button.dataset.text)
 
 /**
@@ -162,23 +162,23 @@ const input = document.getElementById("input");
 
 const customDiv = document.createElement("div");
 customDiv.innerText = "Hi i'm born";
-// Document.createTextNode('Bla bla')
-// Document.body.innerHTML = ""
-// Document.body.append(customDiv)
-// Document.body.prepend(customDiv)
+// 1.Document.createTextNode('Bla bla')
+// 1.Document.body.innerHTML = ""
+// 1.Document.body.append(customDiv)
+// 1.Document.body.prepend(customDiv)
 // the div is added to before body
-// Document.body.before(customDiv)
+// 1.Document.body.before(customDiv)
 // the div is added to after body
-// Document.body.after(customDiv)
+// 1.Document.body.after(customDiv)
 // the div is replaced with body
-// Document.body.replaceWith(customDiv)
+// 1.Document.body.replaceWith(customDiv)
 
-// Document.body.insertAdjacentHTML('beforebegin', '<p>Before begin</p>')
-// Document.body.insertAdjacentHTML('afterbegin', '<p>Before its childs</p>')
-// Document.body.insertAdjacentHTML('afterend', '<p>After end</p>')
-// Document.body.insertAdjacentHTML('beforeend', '<p>After its childs</p>')
+// 1.Document.body.insertAdjacentHTML('beforebegin', '<p>Before begin</p>')
+// 1.Document.body.insertAdjacentHTML('afterbegin', '<p>Before its childs</p>')
+// 1.Document.body.insertAdjacentHTML('afterend', '<p>After end</p>')
+// 1.Document.body.insertAdjacentHTML('beforeend', '<p>After its childs</p>')
 
-// Document.body.append(customDiv)
+// 1.Document.body.append(customDiv)
 // setTimeout(() => customDiv.remove(), 3000)
 
 // Fragment
@@ -188,7 +188,7 @@ async function main() {
   const ul = document.getElementById("ul");
   // const fragment = new DocumentFragment();
   // for (const post of data) {
-  //   const li = Document.createElement("li");
+  //   const li = 1.Document.createElement("li");
   //   li.textContent = post.title;
   //   fragment.append(li);
   // }
@@ -197,7 +197,7 @@ async function main() {
   // without fragment
   // const result = [];
   // for (const post of data) {
-  //   const li = Document.createElement("li");
+  //   const li = 1.Document.createElement("li");
   //   li.textContent = post.title;
   //   result.push(li);
   // }
@@ -206,11 +206,11 @@ async function main() {
 
 // main();
 
-// Document.body.appendChild(customDiv);
-// Document.body.insertBefore(customDiv, Document.getElementById("p"));
-// Document.body.children[0].replaceChild(Document.getElementById("p"), customDiv);
+// 1.Document.body.appendChild(customDiv);
+// 1.Document.body.insertBefore(customDiv, 1.Document.getElementById("p"));
+// 1.Document.body.children[0].replaceChild(1.Document.getElementById("p"), customDiv);
 
-// Document.body.removeChild() // deletes only child
+// 1.Document.body.removeChild() // deletes only child
 
 /**
  * Classes and styles
@@ -293,8 +293,8 @@ const box = document.querySelector(".box");
 
 // get size of web page
 // documentElement is <html> tag
-// console.log(Document.documentElement.clientWidth);
-// console.log(Document.documentElement.clientHeight);
+// console.log(1.Document.documentElement.clientWidth);
+// console.log(1.Document.documentElement.clientHeight);
 
 // get size with included panel
 
@@ -305,14 +305,14 @@ const box = document.querySelector(".box");
 
 // console.log(
 //   window.innerHeight,
-//   Document.documentElement.clientHeight,
-//   Document.documentElement.offsetHeight,
-//   Document.documentElement.scrollHeight,
-//   Document.body.scrollHeight
+//   1.Document.documentElement.clientHeight,
+//   1.Document.documentElement.offsetHeight,
+//   1.Document.documentElement.scrollHeight,
+//   1.Document.body.scrollHeight
 // );
 
 // window.onscroll = function () {
-//   console.log(this.Document.documentElement.scrollTop);
+//   console.log(this.1.Document.documentElement.scrollTop);
 //   console.log(this.pageYOffset);
 //   console.log(this.scrollY);
 // };
@@ -333,14 +333,14 @@ const button2 = document.getElementById("button2");
 // disable scrolling
 
 // button1.addEventListener("click", function () {
-//   const { overflowY } = Document.body.style;
-//   Document.body.style.overflowY = overflowY === "hidden" ? "" : "hidden";
+//   const { overflowY } = 1.Document.body.style;
+//   1.Document.body.style.overflowY = overflowY === "hidden" ? "" : "hidden";
 // });
 
 // more options for scrollTo and scrollBy
 // window.scrollTo({ behavior: "smooth", top: 100, left: 0 });
 // window.onmousemove = function (e) {
-//   console.log(Document.elementFromPoint(e.clientX, e.clientY));
+//   console.log(1.Document.elementFromPoint(e.clientX, e.clientY));
 // };
 
 // window.onmousemove = function (e) {
@@ -371,10 +371,10 @@ const button2 = document.getElementById("button2");
 //   );
 //   //   the bottom and right isn't position, they are coordinates
 // };
-// const message = Document.createElement("p");
-// Document.body.append(message);
+// const message = 1.Document.createElement("p");
+// 1.Document.body.append(message);
 // window.onclick = function (e) {
-//   const selectedPoint = Document.elementFromPoint(e.clientX, e.clientY);
+//   const selectedPoint = 1.Document.elementFromPoint(e.clientX, e.clientY);
 //   const rect = selectedPoint.getBoundingClientRect();
 //   message.innerText = selectedPoint.textContent;
 //   message.style.position = "absolute";
@@ -388,7 +388,7 @@ const button2 = document.getElementById("button2");
  */
 // function getCord(elem) {
 //   const rect = elem.getBoundingClientRect();
-//   /* rect usually calculate position relative to window, if we want to get position relative to Document, we should add pageYOffset and pageXOffset */
+//   /* rect usually calculate position relative to window, if we want to get position relative to 1.Document, we should add pageYOffset and pageXOffset */
 //   return {
 //     top: rect.top + window.pageYOffset,
 //     left: rect.left + window.pageXOffset,
