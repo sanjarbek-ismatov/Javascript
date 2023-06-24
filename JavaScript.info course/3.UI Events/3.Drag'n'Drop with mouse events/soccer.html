@@ -107,14 +107,23 @@
             const shiftY = e.clientY - rect.top
             const shiftX = e.clientX - rect.left
 
-            item.style.position = "absolute"
-            item.style.top = e.pageY - shiftY + 'px'
-            item.style.left = e.pageX - shiftX + 'px'
+            item.style.position = "fixed"
+            item.style.top = e.clientY - shiftY + 'px'
+            item.style.left = e.clientX - shiftX + 'px'
 
             function mouseMove(e) {
-                item.style.top = e.pageY - shiftY + 'px'
-                item.style.left = e.pageX - shiftX + 'px'
-
+                let top = e.clientY - shiftY
+                let left = e.clientX - shiftX
+                if (left < 0)
+                    left = Math.max(0, left)
+                else if (left + item.offsetWidth > document.documentElement.clientWidth)
+                    left = document.documentElement.clientWidth - item.offsetWidth
+                if (top < 0)
+                    top = Math.max(0, top)
+                else if (top + item.offsetHeight > document.documentElement.clientHeight)
+                    top = document.documentElement.clientHeight - item.offsetHeight
+                item.style.top = top + 'px'
+                item.style.left = left + 'px'
             }
 
             document.addEventListener('mousemove', mouseMove)
