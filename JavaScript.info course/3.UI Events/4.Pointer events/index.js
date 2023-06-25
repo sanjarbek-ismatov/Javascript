@@ -20,11 +20,7 @@ function pointerDown(e) {
   if (e.ctrlKey) ball.addEventListener("pointermove", pointerMove);
 }
 
-/**
- *
- * @param {PointerEvent} e
- */
-function pointerUp(e) {
+function pointerUp() {
   ball.removeEventListener("pointermove", pointerMove);
 }
 
@@ -41,7 +37,6 @@ function pointerMove(e) {
  *
  * @param {PointerEvent} e
  */
-function pointerCancel(e) {}
 
 // call listeners
 ball.ondragstart = function () {
@@ -50,6 +45,6 @@ ball.ondragstart = function () {
 ball.addEventListener("pointerdown", pointerDown);
 
 ball.addEventListener("pointerup", pointerUp);
-ball.addEventListener("pointercancel", function (e) {
+ball.addEventListener("pointercancel", function () {
   console.log("canceled");
 });
