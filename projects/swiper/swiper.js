@@ -28,6 +28,7 @@ function pointerDown(e) {
    * @param {PointerEvent} e
    */
   function pointerUp(e) {
+    console.log(e);
     swiper.removeEventListener("pointermove", pointerMove);
     console.log(index);
     container.style.marginLeft = -index * singleItem.clientWidth + "px";
