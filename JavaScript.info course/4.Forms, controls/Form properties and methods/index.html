@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Form properties and methods</title>
+</head>
+<body>
+
+<form name="authForm">
+    <label>
+        <input name="firstname" value="Sanjarbek">
+    </label>
+    <label>
+        <input name="lastname">
+    </label>
+    <label>
+        <input name="image" type="file">
+    </label>
+    <fieldset name="job-info">
+        <legend>Enter your gender</legend>
+        <label>
+            <input name="gender" type="radio" value="male">
+        </label>
+        <label>
+            <input name="gender" type="radio" value="female">
+        </label>
+        <fieldset name="personal-info">
+            <legend>Your personal info</legend>
+            <label>
+                <input name="age" type="number">
+            </label>
+            <label>
+                <textarea name="about" placeholder="Write something about yourself">ddd</textarea>
+            </label>
+        </fieldset>
+    </fieldset>
+    <label>
+        Select your job:
+        <select name="job">
+            <option selected disabled value="">None</option>
+            <option value="coder">Coder</option>
+            <option value="programmer">Programmer</option>
+        </select>
+    </label>
+    <label>
+        <select name="jobSelected">
+            <option selected disabled value="">None</option>
+            <option value="coder">Coder</option>
+            <option value="programmer">Programmer</option>
+        </select>
+    </label>
+    <label>
+        <select id="job" name="jobSelected" multiple>
+            <option value="">None</option>
+            <option value="coder">Coder</option>
+            <option value="programmer">Programmer</option>
+        </select>
+    </label>
+</form>
+</body>
+<script src="index.js">
+
+</script>
+</html>

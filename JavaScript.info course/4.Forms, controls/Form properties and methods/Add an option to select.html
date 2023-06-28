@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Add an option to select</title>
+</head>
+<body>
+<form>
+    <label>
+        <select name="users">
+            <option selected value="js">Sanjarbek</option>
+            <option value="python">Sardor</option>
+        </select>
+    </label>
+</form>
+</body>
+<script>
+    const form = document.forms[0]
+    const classicOption = new Option('Classic', 'classic', true, true)
+    form.users.append(classicOption)
+    console.log(form.users.value)
+</script>
+</html>
