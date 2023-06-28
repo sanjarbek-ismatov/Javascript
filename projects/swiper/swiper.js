@@ -2,6 +2,8 @@
 
 const swiper = document.querySelector(".swiper");
 const container = swiper.querySelector(".swiper-container");
+const singleItem = container.querySelector(".swiper-item");
+let index = 0;
 
 // Listeners
 
@@ -27,6 +29,8 @@ function pointerDown(e) {
    */
   function pointerUp(e) {
     swiper.removeEventListener("pointermove", pointerMove);
+    console.log(index);
+    container.style.marginLeft = -index * singleItem.clientWidth + "px";
   }
 
   swiper.addEventListener("pointerup", pointerUp);
@@ -40,6 +44,7 @@ function pointerDown(e) {
  */
 function moveAt(clientX, shiftX) {
   container.style.marginLeft = clientX - shiftX + "px";
+  index = ~~Math.abs(container.offsetLeft / singleItem.clientWidth);
 }
 
 // call listeners
