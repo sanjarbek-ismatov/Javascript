@@ -2,34 +2,8 @@
 <html>
 
 <head>
+    <link type="text/css" rel="stylesheet" href="my.css">
     <meta charset="utf-8">
-    <style>
-        .view,
-        .edit {
-            height: 150px;
-            width: 400px;
-            font-family: sans-serif;
-            font-size: 14px;
-            display: block;
-        }
-
-        .view {
-            /* padding + border = 3px */
-            padding: 2px;
-            border: 1px solid black;
-        }
-
-        .edit {
-            /* replace padding with border (still 3px not to shift the contents) */
-            border: 3px solid blue;
-            padding: 0px;
-        }
-
-        .edit:focus {
-            /* remove focus border in Safari */
-            outline: none;
-        }
-    </style>
 </head>
 
 <body>
@@ -41,29 +15,63 @@
 
 HTML is allowed.
 
-<div tabindex="0" id="view" class="view">Text</div>
+<div id="view" class="view">Text</div>
+
 <script>
-    // ...your code...
-    // Note: <textarea> should have class="edit"
-    // my.css has styles to make it the same size as div
     const view = document.getElementById('view')
-    view.addEventListener('focus', function (e) {
-        let textarea = document.querySelector('textarea')
-        if (!textarea)
-            textarea = document.createElement('textarea')
-        view.classList.remove('view')
-        textarea.innerText = view.innerHTML
-        view.innerHTML = ''
-        document.body.append(textarea)
-        textarea.classList.add('edit')
-        textarea.addEventListener('blur', function (e) {
-            view.classList.add('view')
-            view.innerHTML = textarea.value
-            textarea.remove()
-        })
-    })
 
+    /**
+     * @returns {HTMLTextAreaElement} textarea element
+     */
+    function areaCreator() {
+        const textArea = document.querySelector('textarea') || document.createElement('textarea')
+        textArea.className = "edit"
+        textArea.addEventListener('blur', handleBlur)
+        textArea.addEventListener('keydown', handleKeydown)
+        return textArea
+    }
 
+    /**
+     * @param {HTMLElement} view
+     * @param {HTMLTextAreaElement} area
+     */
+    function readToEdit(view, area) {
+        area.value = view.innerHTML
+        view.replaceWith(area)
+        area.focus()
+    }
+
+    /**
+     * @param {HTMLElement} view
+     * @param {HTMLTextAreaElement} area
+     */
+    function editToRead(view, area) {
+        view.innerHTML = area.value
+        area.replaceWith(view)
+    }
+
+    /**
+     * @param {Event} event
+     */
+    function handleClick(event) {
+        readToEdit(view, areaCreator())
+    }
+
+    /**
+     * @param {Event} event
+     */
+    function handleBlur(event) {
+        editToRead(view, document.querySelector('.edit'))
+    }
+
+    /**
+     * @param {KeyboardEvent} event
+     */
+    function handleKeydown(event) {
+        if (event.key === "Enter") this.blur()
+    }
+
+    view.addEventListener('click', handleClick)
 </script>
 
 </body>
