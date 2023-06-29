@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Focusing</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        input {
+            border: 1px solid gray;
+            outline: none;
+            padding: 5px;
+            font-size: 20px;
+            border-radius: 5px;
+        }
+
+        .focused {
+            border-color: #37af65;
+        }
+
+        .error {
+            border-color: red;
+        }
+    </style>
+</head>
+<body>
+<form name="authForm">
+    <label>
+        Pochtangiz:
+        <input tabindex="2" name="email" type="email" placeholder="Pochta">
+    </label>
+    <label>
+        Parol:
+        <input tabindex="3" name="password" type="password" placeholder="Parol">
+    </label>
+    <label>
+        Age:
+        <input tabindex="1" name="age" type="password" placeholder="Your age">
+    </label>
+</form>
+</body>
+<script src="index.js"></script>
+</html>
