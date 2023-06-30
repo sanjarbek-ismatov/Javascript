@@ -1,0 +1,77 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <style>
+        #mouse {
+            display: inline-block;
+            cursor: pointer;
+            position: fixed;
+            margin: 0;
+        }
+
+        #mouse:focus {
+            outline: 1px dashed black;
+        }
+    </style>
+</head>
+
+<body>
+
+<p>Click on the mouse and move it with arrow keys.</p>
+
+<pre tabindex="1" id="mouse">
+ _   _
+(q\_/p)
+ /. .\
+=\_t_/=   __
+ /   \   (
+((   ))   )
+/\) (/\  /
+\  Y  /-'
+ nn^nn
+</pre>
+
+
+<script>
+    // ...your code...
+    const position = {top: mouse.offsetTop, left: mouse.offsetLeft}
+
+    function keydown(event) {
+
+        const target = event.target;
+
+        const height = target.offsetHeight
+        const width = target.offsetWidth
+        switch (event.key) {
+            case "ArrowUp":
+                position.top -= height;
+                break;
+            case "ArrowRight":
+                position.left += width;
+                break;
+            case "ArrowLeft":
+                position.left -= width
+                break
+            case "ArrowDown":
+                position.top += height
+                break
+            default:
+                return
+        }
+        target.style.left = position.left + 'px'
+        target.style.top = position.top + "px"
+    }
+
+    mouse.addEventListener('focus', function (e) {
+        mouse.addEventListener('keydown', keydown)
+    })
+    mouse.addEventListener('blur', function (e) {
+        mouse.removeEventListener('keydown', keydown)
+    })
+</script>
+
+</body>
+
+</html>
