@@ -87,157 +87,162 @@
 </head>
 
 <body>
-<p>Click on a table cell to edit it. Press OK or CANCEL when you finish.</p>
+    <p>Click on a table cell to edit it. Press OK or CANCEL when you finish.</p>
 
-<table id="bagua-table">
-    <tr>
-        <th colspan="3"><em>Bagua</em> Chart: Direction, Element, Color, Meaning</th>
-    </tr>
-    <tr>
-        <td class="nw"><strong>Northwest</strong>
-            <br>Metal
-            <br>Silver
-            <br>Elders
-        </td>
-        <td class="n"><strong>North</strong>
-            <br>Water
-            <br>Blue
-            <br>Change
-        </td>
-        <td class="ne"><strong>Northeast</strong>
-            <br>Earth
-            <br>Yellow
-            <br>Direction
-        </td>
-    </tr>
-    <tr>
-        <td class="w"><strong>West</strong>
-            <br>Metal
-            <br>Gold
-            <br>Youth
-        </td>
-        <td class="c"><strong>Center</strong>
-            <br>All
-            <br>Purple
-            <br>Harmony
-        </td>
-        <td class="e"><strong>East</strong>
-            <br>Wood
-            <br>Blue
-            <br>Future
-        </td>
-    </tr>
-    <tr>
-        <td class="sw"><strong>Southwest</strong>
-            <br>Earth
-            <br>Brown
-            <br>Tranquility
-        </td>
-        <td class="s"><strong>South</strong>
-            <br>Fire
-            <br>Orange
-            <br>Fame
-        </td>
-        <td class="se"><strong>Southeast</strong>
-            <br>Wood
-            <br>Green
-            <br>Romance
-        </td>
-    </tr>
+    <table id="bagua-table">
+        <tr>
+            <th colspan="3"><em>Bagua</em> Chart: Direction, Element, Color, Meaning</th>
+        </tr>
+        <tr>
+            <td class="nw"><strong>Northwest</strong>
+                <br>Metal
+                <br>Silver
+                <br>Elders
+            </td>
+            <td class="n"><strong>North</strong>
+                <br>Water
+                <br>Blue
+                <br>Change
+            </td>
+            <td class="ne"><strong>Northeast</strong>
+                <br>Earth
+                <br>Yellow
+                <br>Direction
+            </td>
+        </tr>
+        <tr>
+            <td class="w"><strong>West</strong>
+                <br>Metal
+                <br>Gold
+                <br>Youth
+            </td>
+            <td class="c"><strong>Center</strong>
+                <br>All
+                <br>Purple
+                <br>Harmony
+            </td>
+            <td class="e"><strong>East</strong>
+                <br>Wood
+                <br>Blue
+                <br>Future
+            </td>
+        </tr>
+        <tr>
+            <td class="sw"><strong>Southwest</strong>
+                <br>Earth
+                <br>Brown
+                <br>Tranquility
+            </td>
+            <td class="s"><strong>South</strong>
+                <br>Fire
+                <br>Orange
+                <br>Fame
+            </td>
+            <td class="se"><strong>Southeast</strong>
+                <br>Wood
+                <br>Green
+                <br>Romance
+            </td>
+        </tr>
 
-</table>
+    </table>
 
 
-<script type="text/javascript">
-    /* FUNCTIONS */
-    /**
-     * Readable to Editable
-     * @param {HTMLElement} td
-     * @param {HTMLTextAreaElement} textarea
-     */
-    function readToEdit(td, textarea) {
-        textarea.value = td.innerHTML.toString()
-        td.innerHTML = ""
-        td.append(textarea)
-    }
+    <script type="text/javascript">
+        let currentTd;
+        let currentValue;
+        /* FUNCTIONS */
+        /**
+         * Readable to Editable
+         * @param {HTMLElement} td
+         * @param {string} value
+         */
+        function readToEdit(td, value) {
+            const textarea = areaCreator()
+            const form = formCreator()
+            textarea.value = value
+            td.innerHTML = ""
+            td.append(textarea)
+            td.append(form)
+            textarea.focus()
+        }
 
-    /**
-     * Editable to Readable
-     * @param {HTMLElement} td
-     * @param {HTMLTextAreaElement} textarea
-     * @param {boolean} cancel
-     */
-    function editToRead(td, textarea, cancel = false) {
-        if (cancel) return
-        td.innerHTML = textarea.value.toString()
-    }
+        /**
+         * Editable to Readable
+         * @param {HTMLElement} td
+         * @param {HTMLTextAreaElement} textarea
+         * @param {boolean} cancel
+         */
+        function editToRead(td, textarea, cancel = false) {
+            td.innerHTML = cancel ? currentValue : textarea.value
+            currentTd = null
+            currentValue = null
+        }
 
-    /**
-     * Returns <textarea>
-     * @returns {HTMLTextAreaElement}
-     */
-    function areaCreator() {
-        const area = document.createElement('textarea')
-        area.className = "edit"
-        return area
-    }
+        /**
+         * Returns <textarea>
+         * @returns {HTMLTextAreaElement}
+         */
+        function areaCreator() {
+            const area = document.createElement('textarea')
+            area.className = "edit"
+            return area
+        }
 
-    /**
-     * form
-     * @returns {HTMLDivElement}
-     */
-    function formCreator() {
-        const div = document.createElement('div')
-        const buttons = [{text: "Ok", event: okClick}, {text: 'Cancel', event: cancelClick}].map(({text, event}) => {
-            const button = document.createElement('button')
-            button.textContent = text
+        /**
+         * form
+         * @returns {HTMLDivElement}
+         */
+        function formCreator() {
+            const div = document.createElement('div')
+            const buttons = [{ text: "Ok", event: okClick }, { text: 'Cancel', event: cancelClick }].map(({ text, event }) => {
+                const button = document.createElement('button')
+                button.textContent = text
 
-            button.addEventListener('click', event)
-            return button
-        })
-        div.classList.add('absolute')
-        div.append(...buttons)
-        return div
-    }
+                button.addEventListener('click', event)
+                return button
+            })
+            div.classList.add('absolute')
+            div.append(...buttons)
+            return div
+        }
 
-    /* LISTENERS */
+        /* LISTENERS */
 
-    /**
-     * @param {Event} event
-     */
-    function handleClick(event) {
-        const td = event.target.closest('td')
-        if (td.classList.contains('editable-td')) return
-        td.classList.add('editable-td')
-        const area = areaCreator()
-        area.focus()
-        const form = formCreator()
-        readToEdit(td, area)
-        td.append(form)
+        /**
+         * @param {Event} event
+         */
+        function handleClick(event) {
+            const td = event.target.closest('td')
+            if (!table.contains(td)) return
+            if (!currentTd) {
+                currentTd = td
+                currentTd.classList.add('editable-td')
+                currentValue = currentTd.innerHTML.toString()
+                readToEdit(currentTd, currentValue)
+            }
 
-    }
+        }
 
-    /**
-     * @param {Event} event
-     */
-    function okClick(event) {
-        const td = event.currentTarget.closest('td')
-        const area = event.currentTarget.parentElement.previousElementSibling
-        editToRead(td, area)
-        td.classList.remove('editable-td')
-    }
+        /**
+         * @param {Event} event
+         */
+        function okClick(event) {
+            const td = event.currentTarget.closest('td')
+            const area = event.currentTarget.parentElement.previousElementSibling
+            editToRead(td, area)
+        }
 
-    function cancelClick(event) {
-        const td = event.currentTarget.closest('td')
-        const area = event.currentTarget.parentElement.previousElementSibling
-        td.classList.remove('editable-td')
-        editToRead(td, area, true)
-    }
+        function cancelClick(event) {
 
-    const table = document.getElementById('bagua-table')
-    const body = Array.from(table.tBodies[0].rows).filter(e => Array.from(e.cells).every(e => e.tagName !== 'TH'))
-    body.forEach(e => Array.from(e.cells).forEach(e => e.addEventListener('click', handleClick)))
-</script>
+            const area = event.currentTarget.parentElement.previousElementSibling
+            editToRead(currentTd, area, true)
+        }
+
+        const table = document.getElementById('bagua-table')
+        const body = Array.from(table.tBodies[0].rows).filter(e => Array.from(e.cells).every(e => e.tagName !== 'TH'))
+        body.forEach(e => Array.from(e.cells).forEach(e => e.addEventListener('click', handleClick)))
+    </script>
 
 </body>
 
