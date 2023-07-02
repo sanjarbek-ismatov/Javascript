@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Scripts: async, defer</title>
+</head>
+<body>
+<p>First</p>
+<script defer src="https://javascript.info/article/script-async-defer/long.js"></script>
+<script async src="https://javascript.info/article/script-async-defer/small.js"></script>
+<p>Last</p>
+<script>
+    const script = document.createElement('script')
+    script.src = "index.js"
+    script.async = false
+    document.body.append(script)
+</script>
+</body>
+</html>
