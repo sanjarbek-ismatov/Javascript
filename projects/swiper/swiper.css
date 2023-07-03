@@ -6,11 +6,19 @@
     touch-action: none;
 }
 
+body {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .swiper {
     width: 600px;
-    height: 400px;
+    min-height: 400px;
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
     display: inline-block;
 }
 
@@ -31,4 +39,10 @@
     object-fit: cover;
     height: 100%;
     width: 100%;
+}
+
+.swiper-spinner {
+    width: 0%;
+    height: 5px;
+    background-color: blue;
 }
