@@ -86,15 +86,15 @@ function changePosition() {
 
 function nextOnClick(e) {
   if (index < itemsLength - 1) index++;
-  // else nextBtn.disabled = true;
-  // prevBtn.disabled = false;
+  else nextBtn.disabled = true;
+  prevBtn.disabled = false;
   changePosition();
 }
 
 function prevOnClick(e) {
   if (index > 0) index--;
-  // else prevBtn.disabled = true;
-  // nextBtn.disabled = false;
+  else prevBtn.disabled = true;
+  nextBtn.disabled = false;
   changePosition();
 }
 
@@ -103,5 +103,11 @@ swiper.addEventListener("dragstart", function (e) {
   e.preventDefault();
 });
 swiper.addEventListener("pointerdown", pointerDown);
-prevBtn.onclick = prevOnClick;
-nextBtn.onclick = nextOnClick;
+prevBtn.addEventListener("click", prevOnClick);
+nextBtn.addEventListener("click", nextOnClick);
+prevBtn.addEventListener("pointerdown", function (e) {
+  e.stopPropagation();
+});
+nextBtn.addEventListener("pointerdown", function (e) {
+  e.stopPropagation();
+});
