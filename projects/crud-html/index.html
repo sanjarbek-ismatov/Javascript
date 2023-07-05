@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Crud</title>
+    <style>
+        #selectionArea {
+            position: absolute;
+            background-color: rgba(0, 0, 255, 0.3); /* Blue with transparency */
+            pointer-events: none; /* Allows clicks to pass through the selection area */
+            z-index: 9999; /* Ensures the selection area stays on top of other elements */
+        }
+
+        .selectable {
+            border: 1px solid black;
+            padding: 10px;
+            margin: 10px;
+            background-color: #f0f0f0;
+        }
+
+    </style>
+</head>
+<body>
+<div id="selectionArea"></div>
+<div class="selectable">Element 1</div>
+<div class="selectable">Element 2</div>
+<div class="selectable">Element 3</div>
+</body>
+<script>
+    // Get the canvas element and its 2D context
+    // Get the selection area element
+    var selectionArea = document.getElementById("selectionArea");
+
+    // Variables to store the starting and ending coordinates of the selection area
+    var startX, startY, endX, endY;
+
+    // Flag to indicate if the user is currently selecting an area
+    var isSelecting = false;
+
+    // Event listener for mouse down event
+    document.addEventListener("mousedown", function (e) {
+        // Set the starting coordinates of the selection area
+        startX = e.pageX;
+        startY = e.pageY;
+
+        // Position and display the selection area element
+        selectionArea.style.left = startX + "px";
+        selectionArea.style.top = startY + "px";
+        selectionArea.style.width = "0";
+        selectionArea.style.height = "0";
+        selectionArea.style.display = "block";
+
+        // Set the flag to indicate the start of selection
+        isSelecting = true;
+    });
+
+    // Event listener for mouse move event
+    document.addEventListener("mousemove", function (e) {
+        // Check if the user is currently selecting an area
+        if (isSelecting) {
+            // Get the current ending coordinates of the selection area
+            endX = e.pageX;
+            endY = e.pageY;
+
+            // Calculate the width and height of the selection area
+            var width = endX - startX;
+            var height = endY - startY;
+
+            // Position and resize the selection area element
+            selectionArea.style.width = width + "px";
+            selectionArea.style.height = height + "px";
+
+            // Select elements within the selection area
+            selectElements(startX, startY, endX, endY);
+        }
+    });
+
+    // Event listener for mouse up event
+    document.addEventListener("mouseup", function () {
+        // Set the flag to indicate the end of selection
+        isSelecting = false;
+
+        // Hide the selection area element
+        selectionArea.style.display = "none";
+
+        // Perform any additional operations with the selected area here
+    });
+
+    // Function to select elements within the selection area
+    function selectElements(startX, startY, endX, endY) {
+        // Get all elements with the "selectable" class
+        var elements = document.getElementsByClassName("selectable");
+
+        // Convert the starting and ending coordinates to top-left and bottom-right coordinates
+        var minX = Math.min(startX, endX);
+        var maxX = Math.max(startX, endX);
+        var minY = Math.min(startY, endY);
+        var maxY = Math.max(startY, endY);
+
+        // Loop through the elements and check if they intersect with the selection area
+        for (var i = 0; i < elements.length; i++) {
+            var element = elements[i];
+            var rect = element.getBoundingClientRect();
+
+            var elementX = rect.left;
+            var elementY = rect.top;
+            var elementWidth = rect.width;
+            var elementHeight = rect.height;
+
+            var doesIntersect =
+                elementX < maxX &&
+                elementX + elementWidth > minX &&
+                elementY < maxY &&
+                elementY + elementHeight > minY;
+
+            if (doesIntersect) {
+                // Add a class to indicate the element is selected
+                element.classList.add("selected");
+            } else {
+                // Remove the class if the element is not selected
+                element.classList.remove("selected");
+            }
+        }
+    }
+
+</script>
+</html>
