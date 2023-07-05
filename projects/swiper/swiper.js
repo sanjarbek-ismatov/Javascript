@@ -8,6 +8,8 @@ let index = 0;
 let activeElement = container.children[index];
 let startX = 0;
 const itemsLength = container.children.length;
+const prevBtn = swiper.querySelector(".swiper-button-prev");
+const nextBtn = swiper.querySelector(".swiper-button-next");
 
 // Listeners
 
@@ -40,13 +42,7 @@ function pointerDown(e) {
       if (shiftX < 0) index = Math.min(++index, itemsLength - 1);
       else index = Math.max(--index, 0);
     }
-    const currentPosition = -index * singleItem.clientWidth;
-    container.style.left = currentPosition + "px";
-
-    container.style.transition = "left 0.3s ease-in-out";
-    spinner.style.transition = "width .3s linear";
-    container.addEventListener("transitionend", transitionEnd);
-    spinnerHandle(currentPosition);
+    changePosition();
   }
 }
 
@@ -78,8 +74,34 @@ function spinnerHandle(currentPosition) {
   spinner.style.width = `${percent}%`;
 }
 
+function changePosition() {
+  const currentPosition = -index * singleItem.clientWidth;
+  container.style.left = currentPosition + "px";
+
+  container.style.transition = "left 0.3s ease-in-out";
+  spinner.style.transition = "width .3s linear";
+  container.addEventListener("transitionend", transitionEnd);
+  spinnerHandle(currentPosition);
+}
+
+function nextOnClick(e) {
+  if (index < itemsLength - 1) index++;
+  // else nextBtn.disabled = true;
+  // prevBtn.disabled = false;
+  changePosition();
+}
+
+function prevOnClick(e) {
+  if (index > 0) index--;
+  // else prevBtn.disabled = true;
+  // nextBtn.disabled = false;
+  changePosition();
+}
+
 // call listeners
 swiper.addEventListener("dragstart", function (e) {
   e.preventDefault();
 });
 swiper.addEventListener("pointerdown", pointerDown);
+prevBtn.onclick = prevOnClick;
+nextBtn.onclick = nextOnClick;
