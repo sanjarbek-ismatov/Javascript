@@ -57,3 +57,33 @@ document.addEventListener("selectionchange", function (e) {
 range.selectNodeContents(box);
 document.getSelection().removeAllRanges();
 document.getSelection().addRange(range);
+
+/* --------------------------------------------------------------------- */
+
+const selectionInput = document.querySelector("#selection-input");
+const selectionArea = document.querySelector("#selection-area");
+const commentBtn = document.querySelector("#comment-btn");
+const commentLorem = document.querySelector("#comment-lorem");
+
+selectionInput.addEventListener("select", function (e) {
+  console.log(selectionInput.selectionStart);
+  console.log(selectionInput.selectionEnd);
+  console.log(selectionInput.selectionDirection);
+});
+
+selectionArea.onfocus = function (e) {
+  setTimeout(() => {
+    selectionArea.selectionStart = selectionArea.selectionEnd = 10;
+  });
+};
+commentBtn.onclick = function (e) {
+  const selectedText = selectionArea.value.slice(
+    selectionArea.selectionStart,
+    selectionArea.selectionEnd
+  );
+  selectionArea.setRangeText(`/*${selectedText}*/`);
+};
+commentLorem.onclick = function (e) {
+  const index = selectionArea.value.indexOf("Lorem");
+  selectionArea.setRangeText(`/*Lorem*/`, index, index + 5, "select");
+};
