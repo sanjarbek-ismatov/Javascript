@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Prototype</title>
+</head>
+<body>
+<script>
+    const person = {
+        name: "Sanjarbek",
+        age: 17,
+        isMarried: false,
+        isAdult() {
+            return this.age >= 18
+        }
+    }
+    Object.prototype.makeAlert = function (message) {
+        alert(message)
+    }
+    const prototype = Object.create(person)
+
+    const name = new String("Sanjarbek")
+
+    class PersonWithES6 {
+        constructor(name) {
+            this.name = name
+        }
+
+        getName() {
+            return this.name
+        }
+
+        setName(name) {
+            this.name = name
+        }
+    }
+
+    function PersonWithES5(name) {
+        this.name = name
+        this.getName = function () {
+            return this.name
+        }
+    }
+
+</script>
+</body>
+</html>
