@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Closures</title>
+</head>
+<body>
+<script>
+    var name = "Sanjarbek";
+    (() => {
+        var name = "Sarvinoz"
+
+        function f1() {
+            console.log(name)
+        }
+
+        function f2() {
+            var name = "Sarvinoz"
+            f1()
+        }
+
+        f2()
+    })()
+
+</script>
+</body>
+</html>
