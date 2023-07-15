@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Conditional branching</title>
+</head>
+<body>
+<script>
+    // if (!false) console.log('true')
+    // if (false) ; else console.log('true')
+    (true) ?
+        console.log('true') : console.log('false')
+
+    let login = ""
+    let message = login === "Employee" ? "Hello" : login === "Director" ? "Greetings" : login === "" ? "No login" : ""
+    // if (login == 'Employee') {
+    //     message = 'Hello';
+    // } else if (login == 'Director') {
+    //     message = 'Greetings';
+    // } else if (login == '') {
+    //     message = 'No login';
+    // } else {
+    //     message = '';
+    // }
+
+    console.log(message)
+
+</script>
+</body>
+</html>
