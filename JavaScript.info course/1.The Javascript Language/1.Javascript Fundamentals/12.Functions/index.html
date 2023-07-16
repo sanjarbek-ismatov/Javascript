@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Functions</title>
+</head>
+<body>
+    <script>
+        function changer(primitive, nonPrimitive){
+            primitive = 10
+            nonPrimitive['name'] = "Sanjarbek"
+        }
+        let num = 5
+        const obj = {}
+        changer(num, obj)
+        console.log(num, obj)
+    </script>
+</body>
+</html>
