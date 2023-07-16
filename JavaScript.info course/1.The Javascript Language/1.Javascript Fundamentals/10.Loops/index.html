@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Loops</title>
+</head>
+<body>
+ <script>
+   let i = 1;
+   for(;i < 10;){
+      i++
+   }
+   console.log(i)
+
+   mainloop: for(;;){
+     i++;
+     if(i % 2 == 0) continue mainloop;
+     if(i >= 100) break mainloop;
+     // console.log(i)
+   }
+   // label: {
+   //   break label
+   // }
+
+
+   // for(;;i++) === for(;;++i)
+
+   /* Task */
+   // while(+prompt('Enter a value greater than 100') < 100){}
+
+   main: for(let i = 2; i <= 10; i++){
+     for(let j = 2; j < i; j++){
+       if(i % j == 0) continue main
+     }
+     console.log(i)
+   }
+ </script>
+</body>
+</html>
