@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fibonacci sequence</title>
+</head>
+<body>
+<script>
+    // sample fibonacci which returns array
+    function sampleFibonacci(end) {
+        const arr = [0, 1]
+        for (let i = 1; i < end - 1; i++) {
+            [arr[i + 1], arr[i]] = [arr[i] + arr[i - 1], arr[i]]
+        }
+        return arr
+    }
+
+    function* generatorFibonacci() {
+        const arr = [0, 1]
+        let result
+        while (!result) {
+            arr.push(arr.at(-1) + arr.at(-2))
+            result = yield arr
+        }
+    }
+
+    function fibonacciRecursion(end) {
+        if (end === 1) return [0]
+        else if (end === 2) return [0, 1]
+        const prevSequence = fibonacciRecursion(end - 1)
+        return [...prevSequence, prevSequence.at(-2) + prevSequence.at(-1)]
+    }
+
+    // console.log(sampleFibonacci(12))
+    const fibonacci = generatorFibonacci()
+
+</script>
+</body>
+</html>
