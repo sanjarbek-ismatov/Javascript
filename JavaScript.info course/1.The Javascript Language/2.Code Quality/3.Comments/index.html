@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Comments</title>
+</head>
+<body>
+<script>
+    /**
+     * Sample class to understanding jsDoc
+     * @class Sample class
+     */
+    class Class{
+        /**
+         * constructor of Class
+         * @constructor
+         * @param {string} name Name of person
+         */
+        constructor(name) {
+            /**
+             *  name of current person
+             *  @type {string}
+             */
+            this.name = name
+            /**
+             * The person is married or not
+             * @private
+             * @type {boolean}
+             */
+            this.isMarried = false
+        }
+
+        /**
+         * Returns person name
+         * @returns {string} name of current person
+         */
+        get getName(){
+            return this.name
+        }
+    }
+    const callClass = new Class("Sanjarbek")
+    callClass.getName
+    callClass.name
+</script>
+</body>
+</html>
