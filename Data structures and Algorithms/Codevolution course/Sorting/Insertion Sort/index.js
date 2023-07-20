@@ -21,7 +21,6 @@ function insertionSort(arr){
         arr[j + 1] = insertToNumber
     }
     return arr
-
 }
 
 const unsortedArr = [3, 4, 2, 1, 5]
