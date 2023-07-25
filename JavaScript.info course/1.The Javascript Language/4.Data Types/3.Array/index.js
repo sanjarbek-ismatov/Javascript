@@ -22,3 +22,15 @@ arr1.unshift(1, 2, 3)
 // arr1.customUnShift(4, 5, 6)
 arr1.name = "Sanjarbek"
 console.log(arr1)
+
+const array = new Array(10, 2, 5)
+const arrayWithoutLength = Array.of(10)
+console.log(String(array)) // 10, 2, 5
+console.log(String(array) === "10,2,5") // true
+console.log(arrayWithoutLength)
+
+const a = [] + 1 // [] = "", "" + 1 = 1
+const b = [1, 2] + 2 // [1, 2] = 1,2, 1,22
+// [] == 0 true, [] == "0" false
+// [] -> "" -> 0
+console.log(a, b)
