@@ -91,8 +91,56 @@ powerCalc.addMethod("/", (a, b) => a / b);
 let result = powerCalc.calculate("12 + 34");
 console.log( result ); // 8
 
+// function shuffle(arr){
+//     arr.sort(() => Math.random() - 0.5)
+// }
 function shuffle(arr){
-    arr.sort(() => Math.random() - 0.5)
+    for(let i = arr.length - 1; i > 0; i--){
+        let j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]]
+    }
 }
 shuffle(arr1)
 console.log(arr1)
+
+function unique(arr) {
+    const unique = []
+    for(const item of arr){
+        (!unique.includes(item)) && unique.push(item)
+    }
+    return unique
+}
+
+let strings = ["Hare", "Krishna", "Hare", "Krishna",
+    "Krishna", "Krishna", "Hare", "Hare", ":-O"
+];
+
+console.log( unique(strings) ); // Hare, Krishna, :-O
+
+
+function groupById(arr){
+    const obj = {}
+    arr.forEach(e => {
+        obj[e.id] = e
+    })
+    return obj
+}
+
+
+let usersLast = [
+    {id: 'john', name: "John Smith", age: 20},
+    {id: 'ann', name: "Ann Smith", age: 24},
+    {id: 'pete', name: "Pete Peterson", age: 31},
+];
+
+let usersById = groupById(usersLast);
+console.log(usersById)
+/*
+// after the call we should have:
+
+usersById = {
+  john: {id: 'john', name: "John Smith", age: 20},
+  ann: {id: 'ann', name: "Ann Smith", age: 24},
+  pete: {id: 'pete', name: "Pete Peterson", age: 31},
+}
+*/
