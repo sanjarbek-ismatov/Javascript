@@ -55,3 +55,27 @@ for(const item of gen1){
 for(const item of gen2){
     console.log(item)
 }
+
+let string = "Sanjarbek"
+const iterator = string[Symbol.iterator]()
+while(true){
+    const result = iterator.next()
+    if(result.done) break;
+    console.log(result.value)
+}
+
+const objasArr = {
+    0: "Hello",
+    1: "World",
+    length: 2 // must have
+}
+const array = Array.from(objasArr)
+console.log(array)
+function customFrom(target){
+    const arr = []
+    for(let i = 0; i < target.length; i++){
+        arr.push(target[i])
+    }
+    return arr
+}
+console.log(customFrom(objasArr))
