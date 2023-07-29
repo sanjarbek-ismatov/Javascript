@@ -71,7 +71,25 @@ class LinkedList{
         this.size--
         return removed
     }
-
+    removeFromValue(value){
+        if(this.isEmpty()) return null
+        if(value === this.head.data) {
+            this.head = this.head.next
+        }else{
+            let prev = this.head
+            while(prev.next && prev.next.data !== value){
+                prev = prev.next
+            }
+            if(prev.next) {
+                let found = prev.next
+                prev.next = prev.next.next
+                this.size--
+                return found
+            }
+            return null
+        }
+        this.size--
+    }
     [Symbol.iterator](){
         return function*(){
             let current = this.head
@@ -103,6 +121,7 @@ list.append(20)
 list.append(30)
 list.append(40)
 list.insertAt(50, 1)
-list.remove(0)
+// list.remove(0)
+list.removeFromValue(50)
 console.log(list.size)
 list.display()
