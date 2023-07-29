@@ -51,8 +51,27 @@ class LinkedList{
             node.next = prev.next
             prev.next = node
         }
+        this.size++
 
     }
+    remove(index){
+        if(index < 0 || index > this.size) return
+        let removed;
+        if(index === 0) {
+            removed = this.head
+            this.head = removed.next
+        }else {
+            let prev = this.head
+            for (let i = 0; i < index - 1; i++) {
+                prev = prev.next
+            }
+            removed = prev.next
+            prev.next = removed.next
+        }
+        this.size--
+        return removed
+    }
+
     [Symbol.iterator](){
         return function*(){
             let current = this.head
@@ -84,4 +103,6 @@ list.append(20)
 list.append(30)
 list.append(40)
 list.insertAt(50, 1)
+list.remove(0)
+console.log(list.size)
 list.display()
