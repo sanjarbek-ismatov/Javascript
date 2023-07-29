@@ -39,6 +39,20 @@ class LinkedList{
         }
         this.size++
     }
+    insertAt(data, index){
+        if(index < 0 || index > this.size) return
+        if(index === 0) this.prepend(data)
+        else{
+            const node = new Node(data)
+            let prev = this.head
+            for(let i = 0; i < index - 1; i++){
+                prev = prev.next
+            }
+            node.next = prev.next
+            prev.next = node
+        }
+
+    }
     [Symbol.iterator](){
         return function*(){
             let current = this.head
@@ -65,7 +79,9 @@ class LinkedList{
     }
 }
 const list = new LinkedList()
-console.log(list)
 list.append(10)
 list.append(20)
+list.append(30)
+list.append(40)
+list.insertAt(50, 1)
 list.display()
