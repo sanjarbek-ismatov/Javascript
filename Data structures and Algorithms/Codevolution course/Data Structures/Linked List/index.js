@@ -112,6 +112,18 @@ class LinkedList{
             }
         }.bind(this)
     }
+    reverse(){
+        let curr = this.head
+        let prev = null
+        while(curr){
+            let next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.head = prev
+    }
+
     display(){
         let displayValue = "{ "
         let current = this.head
@@ -137,3 +149,5 @@ list.insertAt(50, 1)
 console.log(list.size)
 list.display()
 console.log(list.search(40))
+list.reverse()
+list.display()
