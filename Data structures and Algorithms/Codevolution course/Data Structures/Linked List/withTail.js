@@ -96,6 +96,7 @@ class LinkedList{
             let i = 0
             while(prev && i < index){
                 prev = prev.next
+                i++
             }
             const removed = prev.next.value
             prev.next = prev.next.next
@@ -118,7 +119,18 @@ class LinkedList{
             return removed
         }
     }
-    search(){}
+    search(value){
+        if(this.isEmpty()) return -1
+        let curr = this.head
+        let i = 0;
+        while(curr){
+            if(curr.value === value) return i
+            curr = curr.next
+            i++
+        }
+        return -1
+
+    }
     display(){
         let displayValue = "{"
         let curr = this.head
@@ -132,7 +144,18 @@ class LinkedList{
         displayValue += "}"
         console.log(displayValue)
     }
-    reverse(){}
+    reverse(){
+        if(this.isEmpty()) return
+        let curr = this.head
+        let prev = null
+        while(curr){
+            let next = curr.next
+            curr.next = prev
+            prev = curr
+            curr = next
+        }
+        this.head = prev
+    }
 }
 const list = new LinkedList()
 
@@ -141,7 +164,10 @@ list.prepend(10)
 list.append(30)
 list.append(40)
 list.insertAt(15, 4)
-list.removeFromValue(10)
+console.log(list.search(15))
+// list.removeFromValue(10)
+// list.removeAtIndex(1)
 // list.pop()
 // list.pop()
+list.reverse()
 list.display()
