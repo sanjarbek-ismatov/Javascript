@@ -148,6 +148,7 @@ class LinkedList{
         if(this.isEmpty()) return
         let curr = this.head
         let prev = null
+        this.tail = curr
         while(curr){
             let next = curr.next
             curr.next = prev
@@ -170,4 +171,5 @@ console.log(list.search(15))
 // list.pop()
 // list.pop()
 list.reverse()
+list.append(70)
 list.display()
