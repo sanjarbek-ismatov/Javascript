@@ -35,7 +35,22 @@ class HashMap {
    */
   set(key, value) {
     const index = this.hash(key);
-    this.table[index] = value;
+    // this.table[index] = value;
+    /**
+     * @type {any[]}
+     */
+    let bucket = this.table[index];
+    if (!bucket) {
+      bucket = [[key, value]];
+    } else {
+      const theSameKey = bucket.find((item) => item[0] === key);
+      if (theSameKey) {
+        theSameKey[1] = value;
+      } else {
+        bucket.push([key, value]);
+      }
+    }
+    this.table[index] = bucket;
   }
   /**
    * Get method
@@ -44,7 +59,12 @@ class HashMap {
    */
   get(key) {
     const index = this.hash(key);
-    return this.table[index];
+    // return this.table[index];
+    /**
+     * @type {any[]}
+     */
+    const bucket = this.table[index];
+    if (bucket) return bucket.find((item) => item[0] === key)[1] || undefined;
   }
   /**
    * Remove method
@@ -52,7 +72,13 @@ class HashMap {
    */
   remove(key) {
     const index = this.hash(key);
-    this.table[index] = undefined;
+    // this.table[index] = undefined;
+    /**
+     * @type {any[]}
+     */
+    const bucket = this.table[index];
+    const theSameKey = bucket.findIndex((item) => item[0] === key);
+    if (theSameKey !== -1) bucket.splice(theSameKey, 1);
   }
   /**
    * Prints data of table
