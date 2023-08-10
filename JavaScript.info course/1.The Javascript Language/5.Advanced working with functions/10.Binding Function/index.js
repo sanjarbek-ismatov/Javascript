@@ -56,3 +56,14 @@ console.log(userPro.sayHello(1, 2))
 
 userPro.sayHello = partial(userPro.sayHello, 1)
 console.log(userPro.sayHello(2))
+
+function hello1(){
+    "use strict"
+    console.log(this) // global this
+}
+const hello2 = () => {
+    console.log(this) // {}
+}
+hello1()
+hello2.bind({name: "Sanjarbek"})() // it doesn't help
+
