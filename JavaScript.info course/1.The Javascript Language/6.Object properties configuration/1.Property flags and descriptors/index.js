@@ -57,3 +57,46 @@ console.log(person.hisLove) // works
 
 const cloned = Object.defineProperties({}, Object.getOwnPropertyDescriptors(person))
 console.log(cloned)
+
+
+// Define an object representing a person
+const object = {
+    firstName: "John",
+    lastName: "Doe",
+    age: 30,
+    isStudent: false,
+    hobbies: ["reading", "painting", "hiking"],
+    address: {
+        street: "123 Main St",
+        city: "Anytown",
+        country: "USA"
+    },
+    sayHello: function() {
+        console.log(`Hello, my name is ${this.firstName} ${this.lastName}. Nice to meet you!`);
+    }
+};
+//
+// Object.preventExtensions(object)
+// object.firstName = "Sanjarbek"
+// delete object.firstName // works
+// // object.none = null //  object is not extensible
+// console.log(object)
+
+// Object.seal(object) // configurable false
+// object.firstName = "Sardor" // works
+// delete object.firstName // cannot delete
+// object.none = null // cannot extend
+// console.log(object)
+
+// Object.freeze(object) configurable and writable false
+
+// all actions are frozen
+
+console.log(Object.isFrozen(Math)) // false
+console.log(Object.isSealed(Math)) // false
+console.log(Object.isExtensible(object)) // true
+
+
+
+
+
