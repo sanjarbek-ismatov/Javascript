@@ -1,3 +1,4 @@
+const Queue = require('../../Queue/index')
 class Node{
     constructor(value){
         this.value = value
@@ -66,6 +67,16 @@ class BinarySearchTree{
             console.log(root.value)
         }
     }
+    levelOrder(){
+        const queue = new Queue()
+        queue.enqueue(this.root)
+        while(queue.size()){
+            const curr = queue.dequeue()
+            console.log(curr.value)
+            if(curr.left) queue.enqueue(curr.left)
+            if(curr.right) queue.enqueue(curr.right)
+        }
+    }
 }
 const bst = new BinarySearchTree()
 bst.insert(20)
@@ -78,3 +89,5 @@ console.log('----')
 bst.inOrder()
 console.log('----')
 bst.postOrder()
+console.log('----')
+bst.levelOrder()

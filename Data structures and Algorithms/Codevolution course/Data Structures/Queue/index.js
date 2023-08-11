@@ -36,3 +36,4 @@ queue.dequeue()
 queue.print()
 console.log(queue.peek())
 
+module.exports = Queue
