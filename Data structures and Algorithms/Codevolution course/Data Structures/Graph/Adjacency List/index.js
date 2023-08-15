@@ -11,6 +11,24 @@ class Graph{
         this.vertexList[vertex1].add(vertex2)
         this.vertexList[vertex2].add(vertex1)
     }
+    display(){
+        for(let key in this.vertexList){
+            console.log(key + " -> " + [...this.vertexList[key]])
+        }
+    }
+    hasEdge(vertex1, vertex2){
+        return this.vertexList[vertex1].has(vertex2) && this.vertexList[vertex2].has(vertex1)
+    }
+    removeEdge(vertex1, vertex2){
+        this.vertexList[vertex1].delete(vertex2)
+        this.vertexList[vertex2].delete(vertex1)
+    }
+    removeVertex(vertex){
+        for(let key of this.vertexList[vertex]){
+            this.removeEdge(vertex, key)
+        }
+        delete this.vertexList[vertex]
+    }
 }
 
 const graph = new Graph()
@@ -19,4 +37,7 @@ graph.addVertex("B")
 graph.addVertex("C")
 graph.addEdge("A", 'B')
 graph.addEdge("C", "B")
-console.log(graph.vertexList)
+// graph.removeEdge("B", "C")
+graph.removeVertex("A")
+graph.display()
+console.log(graph.hasEdge("B", "C"))
