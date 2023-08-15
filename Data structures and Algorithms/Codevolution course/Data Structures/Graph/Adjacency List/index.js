@@ -31,6 +31,7 @@ class Graph{
     }
 }
 
+
 const graph = new Graph()
 graph.addVertex("A")
 graph.addVertex("B")
