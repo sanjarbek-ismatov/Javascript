@@ -27,19 +27,50 @@ class Animal {
          console.log(true)
     }
     constructor() {
-        console.log(this.name); // (*)
+        // console.log(this.name); // (*)
     }
 }
 
 class Rabbit extends Animal {
     constructor() {
         super();
+        // super.method() true
+        // this.__proto__.method() // false
         this.name = "rabbit"
     }
     method() {
-        console.log(false)
+        this.__proto__.method() // true
+        // this.__proto__.method.call(this)
+        // console.log(false)
     }
 }
-
-new Animal().method()// animal
+console.log(Rabbit.prototype.__proto__ === Animal.prototype) // true
+// new Animal().method()// animal
 new Rabbit().method() // animal
+
+const animal = {
+    eat(){
+        console.log("I'm an animal")
+    }
+}
+const plant = {
+    eat(){
+        console.log("I'm a plant")
+    }
+}
+const rabbit = {
+    __proto__: animal,
+    eat(){
+        super.eat()
+    }
+}
+const tree = {
+    __proto__: plant,
+    eat: rabbit.eat,
+    eatAsPlant(){
+        super.eat()
+    }
+}
+rabbit.eat()
+tree.eat()
+tree.eatAsPlant()
