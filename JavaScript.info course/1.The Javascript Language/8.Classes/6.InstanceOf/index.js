@@ -10,7 +10,14 @@ class Animal{
     }
 }
 class Rabbit{}
-Rabbit.__proto__ = Animal
-Rabbit.prototype.__proto__ = Animal.prototype
+// first way
+
+// Rabbit.__proto__ = Animal
+// Rabbit.prototype.__proto__ = Animal.prototype
+
+// second way
+
+Object.setPrototypeOf(Rabbit, Animal)
+Object.setPrototypeOf(Rabbit.prototype, Animal.prototype)
 const rabbit = new Rabbit()
 console.log(rabbit instanceof Animal) // true
