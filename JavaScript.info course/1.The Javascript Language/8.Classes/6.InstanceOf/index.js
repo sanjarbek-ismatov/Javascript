@@ -9,7 +9,7 @@ class Animal{
         console.log("I eat")
     }
 }
-class Rabbit{}
+function Rabbit(){}
 // first way
 
 // Rabbit.__proto__ = Animal
@@ -17,7 +17,18 @@ class Rabbit{}
 
 // second way
 
-Object.setPrototypeOf(Rabbit, Animal)
-Object.setPrototypeOf(Rabbit.prototype, Animal.prototype)
+// Object.setPrototypeOf(Rabbit, Animal)
+// Object.setPrototypeOf(Rabbit.prototype, Animal.prototype)
 const rabbit = new Rabbit()
-console.log(rabbit instanceof Animal) // true
+// console.log(rabbit instanceof Animal) // true
+Rabbit.prototype = {}
+console.log(rabbit instanceof Rabbit) // false
+
+console.log(Object.prototype.toString.call(10)) // [object Number]
+
+const user = {
+    [Symbol.toStringTag]: "User"
+}
+console.log(user.toString()) // [object User]
+
+console.log(user[Symbol.toStringTag]) // User
