@@ -33,3 +33,23 @@ try{
     }
     throw new ReferenceError("Fucked")
 }
+
+
+function main(){
+    try {
+        console.log("I'm try")
+        return 0;
+    }finally {
+        // return 1;
+        console.log("I'm finally")
+    }
+}
+main()
+// console.log(main())
+
+process.on("uncaughtException", (err, origin) => {
+    console.log("Error is ", err)
+})
+process.on('unhandledRejection', (err, promise) => {
+    console.log(err)
+})
