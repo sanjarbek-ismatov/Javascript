@@ -19,11 +19,16 @@ class EventEmitter {
     }
 
     emit(event, args = []) {
-        
+        const result = []
+        this.#actions?.[event].forEach((cb, index) => {
+            result.push(cb(...args))
+        })
+        return result
     }
 }
 const emitter = new EventEmitter()
-emitter.subscribe('sum', (a, b) => console.log(a, b))
+emitter.subscribe('sum', (a, b) =>  a + b).unsubscribe()
+console.log(emitter.emit('sum', [1, 2]))
 /**
  * const emitter = new EventEmitter();
  *
