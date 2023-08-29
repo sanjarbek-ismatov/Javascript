@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    window.addEventListener('unhandledrejection', function(even){
+        console.log(even.promise)
+        console.log(even.reason)
+        console.log(even.message)
+        console.log(even.type)
+        console.log(even)
+        console.log(even.defaultPrevented)
+        console.log(even.isTrusted)
+        console.log(even.source)
+        console.log(even.timeStamp)
+        console.log(even.target)
+        console.log(even.currentTarget)
+    })
+    new Promise((resolve, reject) => {
+        throw new Error("fucked")
+    })
+</script>
+</body>
+</html>
