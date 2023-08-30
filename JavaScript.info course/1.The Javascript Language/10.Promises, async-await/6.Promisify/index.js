@@ -7,11 +7,12 @@ const fs = require('fs')
 function promisify(func){
     return function(...args) {
         return new Promise((resolve, reject) => {
-            func(...args, (err, data) => {
+            function callback(err, data){
                 err && reject(err)
                 data && resolve(data)
-            })
-
+            }
+            args.push(callback)
+            func.call(this, ...args)
         })
     }
 }
