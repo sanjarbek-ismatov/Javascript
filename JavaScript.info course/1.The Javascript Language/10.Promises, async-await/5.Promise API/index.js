@@ -34,3 +34,9 @@ Object.defineProperty(Promise, "allSettledClone", {
     writable: false
 })
 Promise.allSettledClone(promises).then(result => console.log(result))
+
+Promise.any([
+    new Promise((resolve, reject) => setTimeout(() => reject(new Error("Whoops!")), 1000)),
+]).catch(result => console.log(result.constructor.name));
+
+Promise.reject(10).catch(value => console.log(value))
