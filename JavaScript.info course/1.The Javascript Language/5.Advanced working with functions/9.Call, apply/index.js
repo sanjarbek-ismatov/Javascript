@@ -35,7 +35,7 @@ function cacheDecorator(func) {
   const cache = new Map();
   return function (x) {
     const args = [].join.call(arguments);
-    console.log("🚀 ~ file: index.js:38 ~ args:", args);
+    console.log("🚀 ~ file: eval.js:38 ~ args:", args);
     if (cache.has(x)) return cache.get(x);
     let result = func.call(this, x);
     cache.set(x, result);

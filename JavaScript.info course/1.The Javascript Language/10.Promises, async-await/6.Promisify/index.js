@@ -21,4 +21,4 @@ function promisify(func){
 // callback(err => console.log(err), data => console.log(data))
 
 // promisify(callback).then(data => console.log(data))
-promisify(fs.readFile)('./index.js', {encoding: "UTF-8"}).then(result => console.log(result))
+promisify(fs.readFile)('./eval.js', {encoding: "UTF-8"}).then(result => console.log(result))
