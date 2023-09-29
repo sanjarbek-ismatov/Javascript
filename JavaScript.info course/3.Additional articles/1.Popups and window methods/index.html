@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Windows popup</title>
+</head>
+<body>
+<button id="button">Click me</button>
+<button id="focus">Focus me</button>
+<script>
+    button.onclick = function (){
+        let win = window.open("https://google.com", "Google pro", `width=500,height=500,left=100,resizable=no,scrollbars=no,toolbar=no, menubar=no, status=no,location=no`)
+        // let win = window.open("about:blank", "Google pro", `width=500,height=500,left=100, menubar=yes, toolbar=yes, status=yes`)
+        win.onload = function(){
+            win.close()
+            alert(win.closed)
+
+        }
+    }
+    focus.onclick = function(){
+
+    }
+
+</script>
+</body>
+</html>
