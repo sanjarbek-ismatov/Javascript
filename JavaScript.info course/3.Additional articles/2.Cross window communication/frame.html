@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <form>
+        <input name="message">
+        <button type="submit">Yuborish</button>
+    </form>
+<script>
+    const form = document.forms[0]
+    form.addEventListener('submit', (event) => {
+        event.preventDefault()
+        const message = event.target.message.value
+        postMessage(message, "http://localhost:63342/Javascript/JavaScript.info%20course/3.Additional%20articles/2.Cross%20window%20communication/index.html?_ijt=dhpolbi6o04kmv39ji2495ie5m&_ij_reload=RELOAD_ON_SAVE")
+    })
+    window.addEventListener('message', (event) => {
+        console.log(event.data)
+    })
+</script>
+</body>
+</html>
