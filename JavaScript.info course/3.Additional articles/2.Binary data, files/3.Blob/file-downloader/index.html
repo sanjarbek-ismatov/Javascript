@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+  </head>
+  <body>
+    <form name="url">
+      <label>
+        Enter the url
+        <input type="text" name="url" />
+        <button type="submit">Fetch</button>
+      </label>
+    </form>
+    <script>
+      const urlForm = document.forms.namedItem("url");
+      function getFile(url) {
+        return new Promise((resolve) => {
+          const xhr = new XMLHttpRequest();
+          xhr.responseType = "blob";
+          xhr.onload = function () {
+              console.log(xhr.response)
+            resolve(xhr.response);
+          };
+            xhr.open("GET", url, true);
+            xhr.send()
+        });
+      }
+      function fileNameForm() {
+        const form = `
+            <form name="filename">
+                <label>
+                    Enter the filename
+                    <input name="name" type="text">
+                </label>
+                <button type="submit">Submit</button>
+            </form>
+        `;
+        document.body.insertAdjacentHTML('beforeend', form)
+      }
+      function linkCreator(url, filename){
+          const link = document.createElement('a')
+          link.download = filename
+          link.href = url
+         link.click()
+          URL.revokeObjectURL(url)
+      }
+      urlForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+        const urlInput = event.target.url;
+        getFile(urlInput.value).then((blob) => {
+            fileNameForm()
+            const submitNameForm = document.forms.namedItem("filename")
+            submitNameForm.onsubmit = function(event){
+                event.preventDefault()
+                const filename = event.target.name.value
+                linkCreator(URL.createObjectURL(blob), filename)
+            }
+        });
+      });
+    </script>
+  </body>
+</html>
