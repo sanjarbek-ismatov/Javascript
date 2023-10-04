@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<img crossorigin="anonymous" src="https://cdn-icons-png.flaticon.com/512/1144/1144760.png">
+<!--<script src="blob.js"></script>-->
+<script>
+    const img = document.querySelector('img')
+    const canvas = document.createElement('canvas')
+    canvas.width = img.clientWidth
+    canvas.height = img.clientHeight
+    const context = canvas.getContext('2d')
+    context.drawImage(img, 0, 0)
+    canvas.toBlob((blob) => {
+        const url = URL.createObjectURL(blob)
+        const imageLink = document.createElement('a')
+        imageLink.href = url
+        imageLink.download = "image.png"
+        // imageLink.click()
+        URL.revokeObjectURL(url)
+    }, "image/png");
+    // (async () => {
+    //     const imageBlob = await new Promise((resolve) => canvas.toBlob(resolve))
+    //     const url = URL.createObjectURL(imageBlob)
+    //     console.log(url)
+    // })()
+
+    // const url = canvas.toDataURL("image/png")
+    // console.log(url)
+    document.body.append(canvas)
+</script>
+</body>
+</html>
