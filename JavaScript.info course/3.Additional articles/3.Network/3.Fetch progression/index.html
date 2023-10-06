@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Fetch progression</title>
+</head>
+<body>
+    <form name="file-form">
+        <label>Enter the url: <input type="url" name="url" required></label>
+        <button type="submit">Download</button>
+    </form>
+<script>
+    const form = document.forms.namedItem('file-form')
+    async function downloader(url){
+        const response = await fetch(url)
+        const totalLength = response.headers.get('Content-Length')
+        const reader = await response.body.getReader()
+        return {
+            reader,
+            totalLength
+        }
+    }
+
+    /**
+     * @param {ReadableStreamDefaultReader<Uint8Array>} reader
+     * @param {number} totalLength
+     * @returns {Promise<void>}
+     */
+    async function makeProgress({reader, totalLength}){
+        while(true){
+            const {done, value} = await reader.read()
+            if(done) break
+
+        }
+    }
+    form.onsubmit = function(event){
+        event.preventDefault()
+        const url = form.url.value
+        downloader(url)
+    }
+
+</script>
+</body>
+</html>
