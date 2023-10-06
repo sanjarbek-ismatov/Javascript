@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: sans-serif;
+        }
+        body{
+            width: 100%;
+            text-align: center;
+        }
+        #container{
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px;
+        }
+        .img-container{
+            height: 400px;
+            width: 400px;
+            padding: 10px;
+            margin: 10px;
+            object-fit: contain;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px 5px #e5e5e5;
+        }
+        .loading::before{
+            content: "Loading...";
+            position: absolute;
+            font-size: 30px;
+        }
+        .error::before{
+            content: "Error image load";
+            color: #ff0000;
+            font-size: 25px;
+            position: absolute;
+        }
+        .img{
+            width: 100%;
+        }
+    </style>
+    <title>Title</title>
+</head>
+<body>
+    <form name="file-upload">
+        <input type="file" name="image" accept="image/*" multiple>
+        <button type="submit">Submit</button>
+    </form>
+    <div id="container">
+    </div>
+<script>
+    const form = document.forms.namedItem("file-upload")
+    const container = document.getElementById('container')
+    function fileToImg(file){
+        const reader = new FileReader()
+        const imgContainer = document.createElement('div')
+        const img = document.createElement('img')
+        img.className = "img"
+        imgContainer.className = "img-container"
+        imgContainer.append(img)
+        reader.onload = function(){
+            img.src = reader.result
+        }
+        reader.onerror = function(){
+            imgContainer.classList.add('error')
+        }
+        reader.onloadend = function(){
+            imgContainer.classList.remove('loading')
+        }
+        reader.onprogress = function(){
+            imgContainer.classList.add("loading")
+        }
+        reader.readAsDataURL(file)
+        container.append(imgContainer)
+    }
+    form.onsubmit = function(){
+        const imageInput = form.image
+        container.innerHTML = ""
+        for(let file of imageInput.files){
+            fileToImg(file)
+        }
+        return false;
+    }
+</script>
+</body>
+</html>
