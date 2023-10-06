@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Paint to img</title>
+</head>
+<body>
+    <canvas width="600" height="600" id="paint"></canvas>
+    <button onclick="submit()">Download as image</button>
+<script>
+    const canvas = document.getElementById('paint')
+    const ctx = canvas.getContext('2d')
+    ctx.rect(0, 0, 600, 600)
+    ctx.fillStyle = "gray"
+    ctx.fill()
+    function mouseMove(e) {
+        ctx.lineTo(e.clientX, e.clientY)
+        ctx.stroke()
+    }
+    canvas.onmousedown = function() {
+        canvas.onmousemove = mouseMove
+    }
+    canvas.onmouseup = function(){
+        canvas.onmousemove = null
+    }
+    async function submit(){
+        const a = document.createElement('a')
+        const blob = await new Promise(resolve => canvas.toBlob(resolve, "image/png"))
+        const url = URL.createObjectURL(blob)
+        a.download = "image.png"
+        a.href = url
+        a.click()
+    }
+</script>
+</body>
+</html>
