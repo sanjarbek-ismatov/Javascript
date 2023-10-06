@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>FormData</title>
+  </head>
+  <body>
+    <form enctype="multipart/form-data">
+      <input name="image" type="file" accept="image/*" multiple/>
+      <label>Username: <input name="username" type="text" /></label>
+        <input type="submit">
+    </form>
+  <script>
+      const form = document.forms[0]
+      form.onsubmit = function(event){
+          event.preventDefault()
+          const formData = new FormData(form)
+          // const input = form.image
+          // formData.delete('image')
+          // for(const file of input.files){
+          //     formData.set('image', file)
+          // }
+          console.log(formData.getAll("image"))
+      }
+  </script>
+  </body>
+</html>
