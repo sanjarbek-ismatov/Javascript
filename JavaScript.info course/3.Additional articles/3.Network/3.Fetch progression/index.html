@@ -1,44 +1,130 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Fetch progression</title>
-</head>
-<body>
+  </head>
+  <body>
     <form name="file-form">
-        <label>Enter the url: <input type="url" name="url" required></label>
-        <button type="submit">Download</button>
+      <label>Enter the url: <input type="url" name="url" required /></label>
+      <button type="submit">Download</button>
     </form>
-<script>
-    const form = document.forms.namedItem('file-form')
-    async function downloader(url){
-        const response = await fetch(url)
-        const totalLength = response.headers.get('Content-Length')
-        const reader = await response.body.getReader()
+    <div style="display: flex; gap: 10px; padding: 10px" id="result"></div>
+    <script>
+      const form = document.forms.namedItem("file-form");
+      async function downloader(url) {
+        const response = await fetch(url);
+        const totalLength = response.headers.get("Content-Length");
+        const reader = await response.body.getReader();
         return {
-            reader,
-            totalLength
+          reader,
+          totalLength,
+        };
+      }
+      function createElements() {
+        /* Creating Elements */
+        const imgContainer = document.createElement("div");
+        const img = document.createElement("img");
+        const title = document.createElement("p");
+        const progressContainer = document.createElement("div");
+        const lineContainer = document.createElement("div");
+        const line = document.createElement("div");
+
+        /* Inserting Elements */
+
+        lineContainer.append(line);
+        progressContainer.append(title);
+        progressContainer.append(lineContainer);
+        imgContainer.append(progressContainer);
+        result.append(imgContainer);
+
+        /* Styles */
+
+        progressContainer.style.cssText = `
+            position: absolute;
+            text-align: center;
+          `;
+        lineContainer.style.cssText = `
+            width: 300px;
+            height: 30px;
+            border: 1px solid black;
+            margin: auto;
+          `;
+        line.style.cssText = `
+            width: 0%;
+            height: 100%;
+            background-color: green;
+          `;
+        title.style.cssText = `
+            font-size: 30px;
+            color: red;
+          `;
+        imgContainer.style.cssText = `
+                height: 400px;
+                max-width: 400px;
+                width: 100%;
+                position: relative;
+                margin: 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+            `;
+        img.style.cssText = `
+                height: 100%;
+            `;
+
+        return { imgContainer, img, title, line };
+      }
+
+      /**
+       * @param {ReadableStreamDefaultReader<Uint8Array>} reader
+       * @param {string} totalLength
+       * @returns {Promise<void>}
+       */
+      async function makeProgress({ reader, totalLength }) {
+        const { title, img, imgContainer, line } = createElements();
+        const chunks = [];
+        let receivedLength = 0;
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+          chunks.push(value);
+          receivedLength += value.length;
+          title.textContent = `${receivedLength / 1000} KB of ${
+            totalLength / 1000
+          } KB`;
+          const percent = totalLength / 100;
+          const currentPercent = Math.ceil(receivedLength / percent);
+          line.style.width = `${currentPercent}%`;
         }
-    }
 
-    /**
-     * @param {ReadableStreamDefaultReader<Uint8Array>} reader
-     * @param {number} totalLength
-     * @returns {Promise<void>}
-     */
-    async function makeProgress({reader, totalLength}){
-        while(true){
-            const {done, value} = await reader.read()
-            if(done) break
+        /* Receive text */
 
-        }
-    }
-    form.onsubmit = function(event){
-        event.preventDefault()
-        const url = form.url.value
-        downloader(url)
-    }
+        // const chunksAll = new Uint8Array(receivedLength)
+        // let position = 0
+        // for(const chunk of chunks){
+        //     chunksAll.set(chunk, position)
+        //     position += chunk.length
+        // }
+        // const decoder = new TextDecoder("utf-8")
+        // result.innerText = decoder.decode(await new Blob(chunks).arrayBuffer())
 
-</script>
-</body>
+        /* Receive image */
+
+        const blob = new Blob(chunks);
+        const fileReader = new FileReader();
+        fileReader.readAsDataURL(blob);
+        fileReader.onload = function () {
+          img.src = fileReader.result;
+          imgContainer.append(img);
+        };
+      }
+      form.onsubmit = async function (event) {
+        event.preventDefault();
+        const url = form.url.value;
+        const params = await downloader(url);
+        await makeProgress(params);
+      };
+    </script>
+  </body>
 </html>
