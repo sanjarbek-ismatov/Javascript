@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const url1 = new URL('https://javascript.info:4000/url/bro?name=bro&last=lite#bottom')
+        const url2 = new URL('lite', url1)
+        console.log(url1.protocol) // https:
+        console.log(url1.host) // javascript.info
+        console.log(url1.search) // ?name=bro&last=lite
+        console.log(url1.port) // 4000
+        console.log(url1.hash) // #bottom
+        // url1.searchParams.append('name', "Sanjarbek")
+        // url1.searchParams.set("name", "Lite")
+        const russianURL = "https://ru.wikipedia.org/wiki/выставочный"
+        const encoded = encodeURI(russianURL)
+        console.log(decodeURI(encoded))
+        url1.searchParams.set("path", encodeURIComponent('выставочный'))
+        console.log(url1.search)
+    </script>
+</body>
+</html>
