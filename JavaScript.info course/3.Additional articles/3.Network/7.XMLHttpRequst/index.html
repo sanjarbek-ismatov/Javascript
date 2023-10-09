@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form  enctype="multipart/form-data">
+    <input name="image" type="file">
+    <input name="file" type="file">
+    <button type="submit">Submit</button>
+</form>
+    <script>
+        const xhr = new XMLHttpRequest()
+        xhr.open('GET', 'https://jsonplaceholder.typicode.com/users')
+        xhr.setRequestHeader('Content-Type', 'multipart/form-data')
+        xhr.responseType = "text"
+        xhr.upload.onload = function(){
+            // if(xhr.status < 300) {
+                // const data = xhr.response
+                // console.log(xhr.getResponseHeader('Content-Type'))
+                // const headers = `{${xhr.getAllResponseHeaders().split('\n').join(',\n')}}`
+            //     console.log(data)
+            // } else console.log(xhr.statusText)
+            console.log("Upload was success")
+        }
+        xhr.onprogress = function(event){
+            console.log(xhr.responseText)
+            if(event.lengthComputable){
+                console.log(`Uploaded ${event.loaded} of ${event.total}`)
+            } else{
+                console.log(`Uploaded ${event.loaded}`)
+            }
+        }
+        xhr.upload.onerror = function(){
+            console.log("Error")
+        }
+        xhr.upload.onreadystatechange = function(){
+            console.log(xhr.readyState)
+        }
+        // xhr.abort()
+        // const form = document.forms[0]
+        // form.onsubmit = function(event){
+        //     event.preventDefault()
+        //
+        // }
+        xhr.send()
+
+    </script>
+</body>
+</html>
