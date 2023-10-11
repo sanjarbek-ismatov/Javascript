@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const socket = new WebSocket('wss://javascript.info/article/websocket/demo/hello')
+        socket.onopen = function(){
+            console.log("Connection was established")
+            socket.send("Hello, my name is Sanjarbek")
+        }
+        socket.onmessage = function(event){
+            console.log(event.data, event.lastEventId)
+        }
+        socket.onclose = function(event){
+            if(event.wasClean){
+                console.log(`Socket was closed with ${event.reason}`)
+            }else{
+                console.log(`Socket was closed`)
+            }
+        }
+    </script>
+</body>
+</html>
