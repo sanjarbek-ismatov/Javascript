@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // document.cookie = encodeURIComponent("full name=Sanjarbek Ismatov;")
+        // document.cookie = "path=/"
+        // document.cookie = "domain=http://localhost:3000"
+        // document.cookie = "secret=bla; max-age=1"
+        // document.cookie = "secure"
+        // console.log(document.cookie)
+        class Cookie{
+            setCookie(name, value, options){
+                const defaultOptions = {
+                    path: "/",
+                    ...options
+                }
+                let cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value)
+                for(let optionsKey in defaultOptions){
+                    cookie += "; " + optionsKey
+                    const optionValue = defaultOptions[optionsKey]
+                    if(optionValue !== true){
+                        cookie += `=${optionValue}; `
+                    }
+                }
+                document.cookie = cookie
+            }
+            getCookie(name){
+                const cookies = document.cookie.split('; ')
+                for(let cookie of cookies){
+                    const [key, value] = cookie.split('=')
+                    if(name === key) return value
+                }
+                return null
+            }
+            deleteCookie(name){
+                this.setCookie(name, "", {"max-age": "-1"})
+            }
+        }
+        const cookie = new Cookie()
+        cookie.setCookie('name', "Sanjarbek", {"max-age": "10000"})
+        cookie.setCookie('last', "Ismatov", {"max-age": "10000"})
+        cookie.setCookie('none', "Sanjarbek", {"max-age": "10000", "samesite": true})
+
+        console.log(document.cookie)
+    </script>
+</body>
+</html>
