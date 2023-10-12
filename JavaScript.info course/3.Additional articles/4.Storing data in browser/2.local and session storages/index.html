@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+  <script>
+
+    localStorage.name = "Sanjarbek"
+    localStorage.last = "Ismatov"
+    for(let key in localStorage){
+      if(!localStorage.hasOwnProperty(key)) continue
+      console.log(key)
+    }
+    console.log(localStorage.name)
+    window.onstorage = function(event){
+      console.log(event.key, event.url, event.oldValue, event.newValue, event.storageArea)
+    }
+  </script>
+</body>
+</html>
