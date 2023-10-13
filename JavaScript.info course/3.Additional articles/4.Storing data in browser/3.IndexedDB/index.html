@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        const openRequest = indexedDB.open("store", 1)
+        openRequest.onerror = function(){
+            console.log(openRequest.error)
+        }
+        openRequest.onupgradeneeded = function(event){
+            const db = event.target.result;
+            // Create the 'user' object store during the upgrade.
+            if (!db.objectStoreNames.contains('user')) {
+                db.createObjectStore('user', {keyPath: "id"});
+            }
+        }
+
+        openRequest.onsuccess = function(){
+            const db = openRequest.result
+            db.onversionchange = function(){
+                console.log("DB is old")
+                db.close()
+            }
+            const transaction = db.transaction('user', "readwrite")
+            // transaction.abort()
+            const user1 = {
+                name: "Sanjarbek",
+                birthDay: new Date(2005, 11, 9),
+                id: "user2"
+            }
+
+            const users = transaction.objectStore('user')
+
+            const request = users.add(user1)
+            request.onsuccess = function(){
+                console.log("Data has been added successfully")
+            }
+            request.onerror = function(event){
+                event.preventDefault()
+                event.stopPropagation()
+                console.log("Bro there's error" + request.error)
+            }
+            transaction.oncomplete = function(){
+                console.log("Transaction has been completed")
+            }
+            transaction.onabort = function(){
+                console.log("Transaction has been aborted")
+            }
+        }
+    </script>
+</body>
+</html>
