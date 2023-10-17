@@ -14,7 +14,7 @@
             const db = event.target.result;
             // Create the 'user' object store during the upgrade.
             if (!db.objectStoreNames.contains('user')) {
-                db.createObjectStore('user', {keyPath: "id"});
+                db.createObjectStore('user', {keyPath: "id"})
             }
         }
 
@@ -34,15 +34,24 @@
 
             const users = transaction.objectStore('user')
 
-            const request = users.add(user1)
-            request.onsuccess = function(){
-                console.log("Data has been added successfully")
+            // const request = users.add(user1)
+            const allUsers = users.getAll()
+            allUsers.onsuccess = function(){
+                console.log(allUsers.result)
             }
-            request.onerror = function(event){
-                event.preventDefault()
-                event.stopPropagation()
-                console.log("Bro there's error" + request.error)
+            const found = users.get('user1')
+            found.onsuccess = function(){
+                console.log(found.result)
             }
+
+            // request.onsuccess = function(){
+            //     console.log("Data has been added successfully")
+            // }
+            // request.onerror = function(event){
+            //     event.preventDefault()
+            //     event.stopPropagation()
+            //     console.log("Bro there's error" + request.error)
+            // }
             transaction.oncomplete = function(){
                 console.log("Transaction has been completed")
             }

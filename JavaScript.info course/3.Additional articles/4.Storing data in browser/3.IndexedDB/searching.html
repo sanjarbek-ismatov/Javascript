@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    const request = indexedDB.open('database', 1)
+    request.onupgradeneeded = function(event){
+        const db = event.target.result
+        if(!db.objectStoreNames.contains('languages')){
+            db.createObjectStore('languages', {keyPath: 'id'}).createIndex('group_idx', 'group')
+        }
+    }
+    request.onsuccess =  function(event){
+        const db = event.target.result
+        const transaction = db.transaction('languages', 'readwrite')
+        const languages = transaction.objectStore('languages')
+        // languages.add({
+        //     name: "Uzbek",
+        //     id: "uzbek",
+        //     group: "Asia"
+        // })
+        // languages.add({
+        //     name: "Kazakh",
+        //     id: "kazakh",
+        //     group: "Asia"
+        // })
+        // languages.add({
+        //     name: "English",
+        //     id: "british-english",
+        //     group: "Europe"
+        // })
+        // languages.add({
+        //     name: "English",
+        //     id: "american-english",
+        //     group: "America"
+        // })
+        // languages.delete('british-english')
+
+        /* store index */
+
+        if(languages.indexNames.contains('group_idx')) {
+            const idbIndex =  languages.index('group_idx')
+
+            // const allLanguages =  idbIndex.getAll('Asia')
+            // allLanguages.onsuccess = function () {
+            //     console.log(allLanguages.result)
+            // }
+
+            /* store cursor */
+            const cursorRequest = idbIndex.openCursor()
+            cursorRequest.onsuccess = function(){
+                const cursor = cursorRequest.result
+                if(cursor){
+                    const {key, value, primaryKey, direction} = cursor
+                    console.log(key, value, primaryKey, direction)
+                    cursor.continue()
+                }
+            }
+        }
+
+
+    }
+    request.onerror = function(event) {
+        console.error("Error opening database:", event.target.error);
+    };
+    window.addEventListener('unhandledrejection', (event) => {
+        console.log(event.reason)
+    })
+
+</script>
+</body>
+</html>
