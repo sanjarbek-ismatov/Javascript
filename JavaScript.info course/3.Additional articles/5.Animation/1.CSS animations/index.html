@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Title</title>
+    <style>
+      button {
+        border-radius: 0;
+        transition:
+          border-radius 1s ease,
+          padding 2s linear,
+          font-size 0.5s ease;
+        transition-delay: -1s;
+      }
+      button:hover {
+        border-radius: 30px;
+        padding: 20px;
+        font-size: 20px;
+      }
+      #stripe {
+        display: inline-block;
+        transition-property: transform;
+        transition-duration: 9s;
+        transition-timing-function: steps(9, end);
+        /*transition-timing-function: step-end;*/
+        letter-spacing: 20px;
+      }
+      #digits {
+        font-family: monospace;
+        font-size: 100px;
+        padding: 10px;
+        width: 50px;
+        overflow: hidden;
+      }
+      #digits:hover > #stripe {
+        transform: translate(-90%);
+      }
+    </style>
+  </head>
+  <body>
+    <button>Hover me!</button>
+    <div id="digits"><p id="stripe">0123456789</p></div>
+  </body>
+</html>
