@@ -31,8 +31,8 @@
           return 1 - timing(1 - timeFraction);
         };
       }
-      function linear(timeFraction) {
-        return timeFraction;
+      function quad(timeFraction){
+          return Math.pow(timeFraction, 5)
       }
       ball.onclick = () => {
         animate({
@@ -46,7 +46,7 @@
         });
         animate({
           duration: 2000,
-          timing: linear,
+          timing: makeEaseOut(quad),
           draw: (progress) => {
             ball.style.left = progress * 100 + "px";
           },
