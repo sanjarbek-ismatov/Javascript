@@ -1,0 +1,57 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://en.js.cx/libs/animate.js"></script>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div id="field">
+      <img
+        src="https://en.js.cx/clipart/ball.svg"
+        width="40"
+        height="40"
+        id="ball"
+      />
+    </div>
+
+    <script>
+      function bounce(timeFraction) {
+        for (let a = 0, b = 1; 1; a += b, b /= 2) {
+          if (timeFraction >= (7 - 4 * a) / 11) {
+            return (
+              -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) +
+              Math.pow(b, 2)
+            );
+          }
+        }
+      }
+      function makeEaseOut(timing) {
+        return function (timeFraction) {
+          return 1 - timing(1 - timeFraction);
+        };
+      }
+      function linear(timeFraction) {
+        return timeFraction;
+      }
+      ball.onclick = () => {
+        animate({
+          duration: 2000,
+          timing: makeEaseOut(bounce),
+          draw: (progress) => {
+            let perPx = 1.6;
+            let percent = progress * 100;
+            ball.style.top = percent * perPx + "px";
+          },
+        });
+        animate({
+          duration: 2000,
+          timing: linear,
+          draw: (progress) => {
+            ball.style.left = progress * 100 + "px";
+          },
+        });
+      };
+    </script>
+  </body>
+</html>
