@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>JS animation</title>
+    <style>
+      #train {
+        position: relative;
+      }
+    </style>
+  </head>
+  <body>
+    <img id="train" alt="train" src="https://js.cx/clipart/train.gif" />
+    <script>
+      /**
+       * @type {HTMLImageElement}
+       */
+      const train = document.getElementById("train");
+      // train.onclick = () => {
+      //     let start = Date.now()
+      //     let interval = setInterval(() => {
+      //         let timePassed = Date.now() - start
+      //         if(timePassed >= 3000) {
+      //             clearInterval(interval)
+      //         }else{
+      //             animate(timePassed)
+      //         }
+      //     }, 1)
+      // }
+      function draw(progress) {
+          let percent = progress * 100
+          let perLeft = 7
+          let perSize = 2
+          // let size = percent  * perSize + "px";
+        train.style.left = percent * perLeft + "px";
+        // train.style.height = size
+        // train.style.width = size
+      }
+      // train.onclick = () => {
+      //     let requestId = requestAnimationFrame(function cb(time) {
+      //         if (time >= 3000) cancelAnimationFrame(requestId)
+      //         else {
+      //             animate(time)
+      //             requestAnimationFrame(cb)
+      //         }
+      //     })
+      // }
+      train.onclick = () => {
+          animate(2000, makeEaseOut(bounce), draw)
+      }
+      function linear(timeFraction){
+          return timeFraction
+      }
+      function quad(timeFraction){
+          return Math.pow(timeFraction, 5)
+      }
+      function circ(timeFraction) {
+          return 1 - Math.sin(Math.acos(timeFraction));
+      }
+      function back(x, timeFraction) {
+          return Math.pow(timeFraction, 2) * ((x + 1) * timeFraction - x)
+      }
+      function bounce(timeFraction) {
+          for (let a = 0, b = 1; 1; a += b, b /= 2) {
+              if (timeFraction >= (7 - 4 * a) / 11) {
+                  return -Math.pow((11 - 6 * a - 11 * timeFraction) / 4, 2) + Math.pow(b, 2)
+              }
+          }
+      }
+      function elastic(x, timeFraction) {
+          return Math.pow(2, 10 * (timeFraction - 1)) * Math.cos(20 * Math.PI * x / 3 * timeFraction)
+      }
+      function makeEaseOut(timing) {
+          return function(timeFraction) {
+              return 1 - timing(1 - timeFraction);
+          }
+      }
+      function makeEaseInOut(timing) {
+          return function(timeFraction) {
+              if (timeFraction < .5)
+                  return timing(2 * timeFraction) / 2;
+              else
+                  return (2 - timing(2 * (1 - timeFraction))) / 2;
+          }
+      }
+      function animate(duration, timing, draw){
+          let startTime = performance.now()
+          requestAnimationFrame(function animate(time) {
+              let timeFraction = (time - startTime) / duration
+              let progress = timing(timeFraction)
+              draw(progress)
+              if(timeFraction < 1) requestAnimationFrame(animate)
+          })
+      }
+    </script>
+  </body>
+</html>
