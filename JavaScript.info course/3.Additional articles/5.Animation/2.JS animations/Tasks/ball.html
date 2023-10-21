@@ -26,6 +26,9 @@
           }
         }
       }
+      function linear(timeFraction){
+        return timeFraction
+      }
       function makeEaseOut(timing) {
         return function (timeFraction) {
           return 1 - timing(1 - timeFraction);
@@ -46,7 +49,7 @@
         });
         animate({
           duration: 2000,
-          timing: makeEaseOut(quad),
+          timing: linear,
           draw: (progress) => {
             ball.style.left = progress * 100 + "px";
           },
