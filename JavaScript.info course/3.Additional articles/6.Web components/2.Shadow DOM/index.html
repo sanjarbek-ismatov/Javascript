@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        input::-webkit-slider-runnable-track{
+            background-color: white;
+        }
+
+    </style>
+</head>
+<body>
+<input type="range">
+<input type="checkbox">
+<div></div>
+<shadow-element id="shadow">
+
+</shadow-element>
+<script>
+    class SimpleElement extends HTMLElement{
+        constructor(){
+            super()
+        }
+        connectedCallback(){
+            const shadow = this.attachShadow({mode: "open"})
+            shadow.innerHTML = `
+<style>
+div{
+    width: 400px;
+    height: 400px;
+    background-color: black;
+}
+</style>
+                <div>
+                    <p>I'm from the shadow</p>
+                </div>
+            `
+        }
+    }
+    customElements.whenDefined('shadow-element').then(() => {
+        const shadowElement = document.getElementById('shadow')
+        console.log(shadowElement.shadowRoot.host === shadowElement)
+    })
+    customElements.define('shadow-element', SimpleElement)
+</script>
+</body>
+</html>
