@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Template</title>
+</head>
+<body>
+<template id="template">
+    <input id="text" type="text">
+    <button id="submit">Submit</button>
+    <p id="message"></p>
+</template>
+<div id="container">
+
+</div>
+<script>
+    const templ = document.getElementById('template')
+    const container = document.getElementById('container')
+    container.attachShadow({mode: "open"})
+    container.shadowRoot.append(templ.content.cloneNode(true))
+    const {shadowRoot} = container
+    const message = shadowRoot.getElementById('message')
+    const input = shadowRoot.getElementById('text')
+    const submitBtn = shadowRoot.getElementById('submit')
+    submitBtn.onclick = () => {
+        message.innerText = input.value
+    }
+</script>
+</body>
+</html>
