@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Custom menu</title>
+</head>
+<body>
+<template id="menu-template">
+    <style>
+
+    </style>
+    <slot name="title">No title</slot>
+    <hr>
+    <ul>
+        <slot name="item">No item</slot>
+        <slot></slot>
+    </ul>
+</template>
+    <custom-menu>
+        <p slot="title">Menu</p>
+        <li slot="item">Home</li>
+        <li slot="item">About</li>
+        <li slot="item">Log out</li>
+    </custom-menu>
+</body>
+<script src="script.js"></script>
+</html>
