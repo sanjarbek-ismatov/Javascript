@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Events</title>
+</head>
+<body>
+<user-card id="user">
+    <span slot="username">Sanjarbek Ismatov</span>
+</user-card>
+    <script>
+        customElements.define('user-card', class extends HTMLElement {
+            connectedCallback() {
+                this.attachShadow({mode: 'open'});
+                this.shadowRoot.innerHTML = `<div>
+      <b>Name:</b> <slot name="username"></slot>
+    </div>`;
+
+                this.shadowRoot.firstElementChild.onclick = (event) => {
+                    console.log(event.composedPath())
+                }
+
+            }
+        });
+        const button = document.createElement('button')
+        button.innerText = "Click"
+        user.shadowRoot.append(button)
+        button.onclick = () => {
+            button.dispatchEvent(new CustomEvent('click-pro', {
+                bubbles: true,
+                composed: true,
+                detail: "click"
+            }))
+        }
+        button.addEventListener('click-pro', event => {
+            console.log(event.composedPath())
+        })
+    </script>
+</body>
+</html>
