@@ -27,10 +27,15 @@
     <h1 id="user-name"></h1>
     <p id="description"></p>
 </template>
-<github-avatar username="sanjarbek-ismatov">
+<github-avatar id="me" username="sanjarbek-ismatov">
 </github-avatar>
 <github-avatar username="boburf">
 </github-avatar>
+<script>
+    me.addEventListener('loaded', event => {
+        console.log(event.detail.value)
+    })
+</script>
 <script src="main.js"></script>
 </body>
 </html>
