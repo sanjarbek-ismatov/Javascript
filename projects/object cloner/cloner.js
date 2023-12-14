@@ -1,4 +1,3 @@
-/*
 const key = "use";
 const user = {
   name: "Sanjarbek",
@@ -13,13 +12,25 @@ const user = {
     age: 18,
   },
 };
-*/
 
-{
-  key1: {
-    key2: {
-      key21: 1;
-      key22: 2;
+/**
+ * Object cloner
+ * @param {{}} o actual object
+ * @returns {{}} cloned object
+ */
+function objectCloner(o) {
+  if (typeof o !== "object" && o !== null) {
+    return o;
+  } else {
+    const cloned = Array.isArray(o) ? [] : {};
+    for (let key in o) {
+      cloned[key] = objectCloner(o[key]);
     }
+    return cloned;
   }
 }
+
+const copyUser = objectCloner(user);
+
+console.log(user);
+console.log(copyUser.girlfriend === user.girlfriend);
