@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      :root {
+        font-size: 15px;
+      }
+      body {
+        font-size: 20px;
+      }
+      * {
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .box {
+        width: 5in;
+        height: 400px;
+        background-color: red;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box"></div>
+    <script>
+      /**
+       * @type {HTMLDivElement}
+       */
+      const box = document.querySelector(".box");
+      box.textContent = `${box.clientWidth}PX x ${box.clientHeight}PX`;
+    </script>
+  </body>
+</html>
