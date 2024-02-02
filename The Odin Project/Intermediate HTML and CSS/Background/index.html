@@ -11,25 +11,66 @@
 
         }
 
-        .box {
+        .box-1 {
             width: 600px;
             height: 600px;
-
             font-size: 3rem;
             overflow: scroll;
             color: red;
+            background: url("https://interactive-examples.mdn.mozilla.net/media/examples/lizard.png") no-repeat scroll, url("https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg") local, linear-gradient(to bottom, red, green);
+            background-blend-mode: multiply;
+            background-position: center, center, center;
         }
 
-        .box {
-            background: url("https://interactive-examples.mdn.mozilla.net/media/examples/lizard.png") no-repeat fixed, url("https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg") local;
-            background-blend-mode: normal;
+        .box-2 {
+            width: 400px;
+            height: 400px;
+            padding: 10px;
+            border: 10px dotted red;
+            background-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg);
+            font-size: 3rem;
+            font-weight: bold;
+            text-align: center;
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        .box-3 {
+            width: 300px;
+            height: 300px;
+            padding: 10px;
+            margin: 2em;
+            border: 10px dashed blue;
+            background-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg);
+            background-repeat: no-repeat;
+            /* background-origin: content-box; */
+            background-position: -50% 50%;
+        }
+
+        .box-4 {
+            width: 800px;
+            height: 800px;
+            background-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/lizard.png);
+            background-repeat: space round;
+
+        }
+
+        .box-5 {
+            width: 500px;
+            height: 400px;
+            background-image: url(https://interactive-examples.mdn.mozilla.net/media/examples/moon.jpg);
+            background-repeat: no-repeat;
+            background-size: 500px 500px;
+            background-position: center;
+            border: 3px solid red;
         }
     </style>
     <title>Document</title>
 </head>
 
 <body>
-    <div class="box">
+    <div class="box-1">
         Lorem, ipsum dolor sit amet consectetur adipisicing elit. Corrupti consectetur vitae rerum, accusamus optio
         earum suscipit possimus quia quas obcaecati sequi dolorem perspiciatis et ratione, illo sed molestiae fuga
         temporibus repudiandae nulla. Et repellendus dolorum quam porro excepturi tempore nemo labore! Fuga repellat
@@ -39,7 +80,18 @@
         soluta. Atque consequuntur eum repellendus labore eaque quasi mollitia amet saepe accusantium commodi?
         Architecto?
     </div>
+    <div class="box-2">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Sint, delectus.</div>
+    <div class="box-3">
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Provident obcaecati magni repellendus facilis
+        aspernatur est repellat temporibus esse, tempora tempore sunt consequatur culpa error dolorem deserunt
+        recusandae quidem architecto eaque.
+    </div>
+    <div class="box-4">
 
+    </div>
+    <div class="box-5">
+
+    </div>
 </body>
 
 </html>
