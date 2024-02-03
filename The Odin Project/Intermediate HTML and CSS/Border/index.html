@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+
+        .box {
+            width: 200px;
+            height: 200px;
+            border-bottom-right-radius: 60% 40%;
+            border: 1em ridge red;
+            outline: 1em outset blue;
+            box-shadow: 0 0 10px 40px lightblue;
+            margin: 50px;
+            outline-offset: .5em;
+            text-align: center;
+            background-color: aqua;
+            padding: 10px;
+            background-clip: content-box;
+        }
+
+        .box p {
+            writing-mode: horizontal-tb;
+            /* border: 1em solid blue;
+            border-block-start-width: 1em;
+            border-block-start-color: black;
+            border-block-start-style: solid; */
+        }
+
+        table {
+            border: 1px solid;
+            border-collapse: separate;
+        }
+
+        table td,
+        table th {
+            border: 10px solid;
+            border-color: red blue green yellow;
+        }
+
+        .box-pro {
+            width: 100px;
+            height: 100px;
+            border: 1px solid;
+            margin: 100px;
+            /* transform: rotate(90deg); */
+            direction: rtl;
+            border-end-end-radius: 100px;
+            /* border-bottom-left-radius: 100px; */
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box">
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos, nisi?</p>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Last Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Sanjarbek</td>
+                <td>18</td>
+            </tr>
+            <tr>
+                <td>Sarvinoz</td>
+                <td>18</td>
+            </tr>
+        </tbody>
+    </table>
+    <div class="box-pro">
+        Hello
+    </div>
+</body>
+
+</html>
