@@ -69,8 +69,16 @@
         }
 
         #myFirstDialog::backdrop {
-            background-color: lightblue;
-            backdrop-filter: blur(20px);
+            /* background-color: lightblue; */
+            backdrop-filter: blur(5px);
+        }
+
+        [src] {
+            width: 400px;
+        }
+
+        img:not([alt*="good"]) {
+            filter: blur(10px);
         }
     </style>
 </head>
@@ -121,6 +129,12 @@
         </form>
     </dialog>
     <button id="button">Open</button>
+    <div class="images">
+        <img src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg" alt="image-good">
+        <img src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg" alt="image-good-pro">
+        <img src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg" alt="image-bad">
+        <img src="https://buffer.com/library/content/images/size/w1200/2023/10/free-images.jpg" alt="image-good">
+    </div>
     <script>
         const dialog = document.getElementById('myFirstDialog')
         const button = document.getElementById('button')
