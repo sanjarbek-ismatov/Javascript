@@ -51,4 +51,11 @@ function nthFibonacci(n) {
   return nthFibonacci(n - 1) + nthFibonacci(n - 2);
 }
 
-function recurFib(n) {}
+function recurFib(n) {
+  if (n === 1) return [0];
+  else if (n === 2) return [0, 1];
+  const sequence = recurFib(n - 1);
+  const last = sequence.length - 1;
+  return [...sequence, sequence[last] + sequence[last - 1]];
+}
+console.log(recurFib(10));
